@@ -4,6 +4,13 @@
          SCHEDULE_EXACT_ALARM/USE_EXACT_ALARM, which Play Store gates behind
          an alarm/calendar-app policy this app doesn't need). -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- Voice dictation (speech_to_text) for the diagnosis field — the
+         first increment of the AI ambient-scribe feature. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
     <application
         android:label="@string/app_name"
         android:name="${applicationName}"
@@ -45,6 +52,11 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Required by speech_to_text on Android 11+ (package visibility)
+             so the app can find the on-device speech recognition service. -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
 </manifest>
