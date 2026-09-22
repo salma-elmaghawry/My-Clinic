@@ -1,0 +1,140 @@
+{
+    "app_name": "د. أحمد المغاوري",
+    "common": {
+        "ok": "حسناً",
+        "cancel": "إلغاء",
+        "retry": "إعادة المحاولة",
+        "save": "حفظ",
+        "next": "التالي",
+        "skip": "تخطي",
+        "done": "تم",
+        "loading": "جارٍ التحميل...",
+        "no_data": "لا توجد بيانات",
+        "coming_soon": {
+            "title": "قريباً",
+            "description": "هذه الميزة قادمة في تحديث لاحق."
+        }
+    },
+    "preferences": {
+        "language": "اللغة",
+        "theme": "المظهر",
+        "theme_light": "فاتح",
+        "theme_dark": "داكن",
+        "theme_system": "النظام"
+    },
+    "errors": {
+        "network_error": "لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة والمحاولة مرة أخرى",
+        "server_error": "خطأ في الخادم. يرجى المحاولة لاحقاً",
+        "unexpected_error": "حدث خطأ غير متوقع",
+        "patient_not_found": "لم يتم العثور على المريض",
+        "drug_not_found": "لم يتم العثور على الدواء"
+    },
+    "auth": {
+        "errors": {
+            "invalid_credentials": "بيانات تسجيل الدخول غير صحيحة",
+            "email_in_use": "هذا البريد الإلكتروني مسجل بالفعل",
+            "rate_limit_exceeded": "طلبات كثيرة جداً. يرجى الانتظار قليلاً قبل المحاولة مرة أخرى",
+            "invalid_otp": "الرمز منتهي الصلاحية أو غير صحيح",
+            "email_not_confirmed": "البريد الإلكتروني غير مؤكد"
+        },
+        "login": {
+            "email_label": "البريد الإلكتروني",
+            "email_hint": "أدخل بريدك الإلكتروني",
+            "email_required": "البريد الإلكتروني مطلوب",
+            "email_invalid": "أدخل بريداً إلكترونياً صحيحاً",
+            "password_label": "كلمة المرور",
+            "password_hint": "أدخل كلمة المرور",
+            "password_required": "كلمة المرور مطلوبة",
+            "password_length": "يجب أن تكون كلمة المرور 6 أحرف على الأقل"
+        },
+        "signup": {
+            "name_required": "الاسم مطلوب",
+            "password_mismatch": "كلمتا المرور غير متطابقتين"
+        }
+    },
+    "doctor": {
+        "title": "استشاري جراحة الأوعية الدموية"
+    },
+    "nav": {
+        "home": "الرئيسية",
+        "patients": "المرضى",
+        "prescription": "الروشتة",
+        "appointments": "المواعيد",
+        "settings": "الإعدادات"
+    },
+    "home": {
+        "greeting": "أهلاً بعودتك، {}",
+        "stats": {
+            "today_patients": "مرضى اليوم",
+            "appointments": "المواعيد"
+        },
+        "cta": "روشتة جديدة",
+        "quick_nav": {
+            "title": "الوصول السريع",
+            "patient_records": "سجلات المرضى",
+            "appointments": "المواعيد",
+            "drug_database": "قاعدة بيانات الأدوية",
+            "notes_stats": "الملاحظات والإحصائيات"
+        },
+        "recent_patients": {
+            "title": "أحدث المرضى"
+        }
+    },
+    "patients": {
+        "gender": {
+            "male": "ذكر",
+            "female": "أنثى"
+        },
+        "list": {
+            "title": "المرضى",
+            "search_hint": "ابحث عن مريض بالاسم"
+        },
+        "detail": {
+            "tabs": {
+                "medical_history": "التاريخ المرضي",
+                "current_treatment": "العلاج الحالي",
+                "next_visit": "الزيارة القادمة"
+            },
+            "medical_history": {
+                "title": "التاريخ المرضي"
+            },
+            "current_treatment": {
+                "title": "العلاج الحالي"
+            },
+            "next_visit": {
+                "title": "الزيارة القادمة",
+                "reminder_set": "تم ضبط التذكير"
+            },
+            "new_prescription_button": "روشتة جديدة"
+        }
+    },
+    "prescription": {
+        "new": {
+            "title": "روشتة جديدة",
+            "drug_search_hint": "ابحث عن دواء بالاسم",
+            "dose_label": "الجرعة",
+            "frequency_label": "عدد مرات الاستخدام",
+            "duration_label": "المدة",
+            "when_to_take_label": "وقت الاستخدام",
+            "notes_label": "ملاحظات",
+            "add_another_drug": "إضافة دواء آخر",
+            "diagnosis_label": "التشخيص",
+            "save_draft": "حفظ كمسودة",
+            "generate": "إصدار",
+            "select_patient_hint": "ابحث عن مريض",
+            "draft_saved": "تم حفظ المسودة",
+            "errors": {
+                "missing_patient": "يرجى اختيار مريض أولاً",
+                "missing_drugs": "يرجى إضافة دواء واحد على الأقل",
+                "missing_diagnosis": "يرجى إدخال التشخيص"
+            }
+        },
+        "preview": {
+            "title": "معاينة الروشتة",
+            "diagnosis_label": "التشخيص",
+            "notes_label": "ملاحظات",
+            "qr_caption": "امسح للعرض",
+            "share_coming_soon": "المشاركة قريباً"
+        }
+    }
+}

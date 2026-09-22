@@ -1,0 +1,140 @@
+{
+    "app_name": "Dr. Ahmed Elmaghawry",
+    "common": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "retry": "Retry",
+        "save": "Save",
+        "next": "Next",
+        "skip": "Skip",
+        "done": "Done",
+        "loading": "Loading...",
+        "no_data": "No data available",
+        "coming_soon": {
+            "title": "Coming soon",
+            "description": "This feature is on the way in a future update."
+        }
+    },
+    "preferences": {
+        "language": "Language",
+        "theme": "Theme",
+        "theme_light": "Light",
+        "theme_dark": "Dark",
+        "theme_system": "System"
+    },
+    "errors": {
+        "network_error": "No internet connection. Please check your network and try again",
+        "server_error": "Server error. Please try again later",
+        "unexpected_error": "An unexpected error occurred",
+        "patient_not_found": "Patient not found",
+        "drug_not_found": "Drug not found"
+    },
+    "auth": {
+        "errors": {
+            "invalid_credentials": "Invalid login credentials",
+            "email_in_use": "This email is already registered",
+            "rate_limit_exceeded": "Too many requests. Please wait a while before trying again",
+            "invalid_otp": "Code has expired or is invalid",
+            "email_not_confirmed": "Email not confirmed"
+        },
+        "login": {
+            "email_label": "Email",
+            "email_hint": "Enter your email",
+            "email_required": "Email is required",
+            "email_invalid": "Enter a valid email",
+            "password_label": "Password",
+            "password_hint": "Enter your password",
+            "password_required": "Password is required",
+            "password_length": "Password must be at least 6 characters"
+        },
+        "signup": {
+            "name_required": "Name is required",
+            "password_mismatch": "Passwords do not match"
+        }
+    },
+    "doctor": {
+        "title": "Vascular Surgeon"
+    },
+    "nav": {
+        "home": "Home",
+        "patients": "Patients",
+        "prescription": "Prescription",
+        "appointments": "Appointments",
+        "settings": "Settings"
+    },
+    "home": {
+        "greeting": "Welcome back, {}",
+        "stats": {
+            "today_patients": "Today's patients",
+            "appointments": "Appointments"
+        },
+        "cta": "New Prescription",
+        "quick_nav": {
+            "title": "Quick access",
+            "patient_records": "Patient Records",
+            "appointments": "Appointments",
+            "drug_database": "Drug Database",
+            "notes_stats": "Notes & Stats"
+        },
+        "recent_patients": {
+            "title": "Recent patients"
+        }
+    },
+    "patients": {
+        "gender": {
+            "male": "Male",
+            "female": "Female"
+        },
+        "list": {
+            "title": "Patients",
+            "search_hint": "Search patients by name"
+        },
+        "detail": {
+            "tabs": {
+                "medical_history": "Medical History",
+                "current_treatment": "Current Treatment",
+                "next_visit": "Next Visit"
+            },
+            "medical_history": {
+                "title": "Medical History"
+            },
+            "current_treatment": {
+                "title": "Current Treatment"
+            },
+            "next_visit": {
+                "title": "Next Visit",
+                "reminder_set": "Reminder set"
+            },
+            "new_prescription_button": "New Prescription"
+        }
+    },
+    "prescription": {
+        "new": {
+            "title": "New Prescription",
+            "drug_search_hint": "Search drugs by name",
+            "dose_label": "Dose",
+            "frequency_label": "Frequency",
+            "duration_label": "Duration",
+            "when_to_take_label": "When to take",
+            "notes_label": "Notes",
+            "add_another_drug": "Add another drug",
+            "diagnosis_label": "Diagnosis",
+            "save_draft": "Save Draft",
+            "generate": "Generate",
+            "select_patient_hint": "Search for a patient",
+            "draft_saved": "Draft saved",
+            "errors": {
+                "missing_patient": "Please select a patient first",
+                "missing_drugs": "Please add at least one drug",
+                "missing_diagnosis": "Please enter a diagnosis"
+            }
+        },
+        "preview": {
+            "title": "Prescription Preview",
+            "diagnosis_label": "Diagnosis",
+            "notes_label": "Notes",
+            "qr_caption": "Scan to view",
+            "share_coming_soon": "Sharing is coming soon"
+        }
+    }
+}
