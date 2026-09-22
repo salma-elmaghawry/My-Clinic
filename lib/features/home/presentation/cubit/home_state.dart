@@ -5,6 +5,7 @@ import 'package:my_clinic/features/patients/domain/entities/patient.dart';
 class HomeState extends BaseState {
   final int todayPatientsCount;
   final int appointmentsCount;
+  final int totalPatientsCount;
   final List<Patient> recentPatients;
   final Failure? failure;
 
@@ -13,6 +14,7 @@ class HomeState extends BaseState {
     super.message,
     this.todayPatientsCount = 0,
     this.appointmentsCount = 0,
+    this.totalPatientsCount = 0,
     this.recentPatients = const [],
     this.failure,
   });
@@ -22,6 +24,7 @@ class HomeState extends BaseState {
     String? message,
     int? todayPatientsCount,
     int? appointmentsCount,
+    int? totalPatientsCount,
     List<Patient>? recentPatients,
     Failure? failure,
   }) {
@@ -30,6 +33,7 @@ class HomeState extends BaseState {
       message: message ?? this.message,
       todayPatientsCount: todayPatientsCount ?? this.todayPatientsCount,
       appointmentsCount: appointmentsCount ?? this.appointmentsCount,
+      totalPatientsCount: totalPatientsCount ?? this.totalPatientsCount,
       recentPatients: recentPatients ?? this.recentPatients,
       failure: failure ?? this.failure,
     );
@@ -41,6 +45,7 @@ class HomeState extends BaseState {
     message,
     todayPatientsCount,
     appointmentsCount,
+    totalPatientsCount,
     recentPatients,
     failure,
   ];

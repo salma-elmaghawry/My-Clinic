@@ -11,8 +11,13 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> loadHome() async {
     emit(state.copyWith(status: Status.loading));
-    final result = await _patientsRepository.getRecentPatients(limit: 5);
-    result.fold(
+    final recentResult = await _patientsRepository.getRecentPatients(limit: 5);
+    // Also pulled for the total-patients milestone card — cheap against the
+    // in-memory datasource today, and the same call a Supabase-backed
+    // repository would need for a real count later.
+    final allResult = await _patientsRepository.getPatients();
+
+    recentResult.fold(
       (failure) => emit(state.copyWith(
         status: Status.failure,
         message: failure.message,
@@ -25,6 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
         todayPatientsCount: recentPatients.length,
         // TODO: replace with AppointmentsRepository once that feature ships.
         appointmentsCount: 3,
+        totalPatientsCount: allResult.fold((_) => state.totalPatientsCount, (all) => all.length),
       )),
     );
   }

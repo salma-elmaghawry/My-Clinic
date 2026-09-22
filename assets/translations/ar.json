@@ -80,6 +80,19 @@
         },
         "recent_patients": {
             "title": "أحدث المرضى"
+        },
+        "milestone": {
+            "tier": "مستوى {tier}",
+            "count": "{count} مريض",
+            "remaining": "باقي {count} علشان توصل للمستوى الجاي",
+            "top_tier": "وصلت لأعلى مستوى!",
+            "tiers": {
+                "starting": "البداية",
+                "bronze": "برونزي",
+                "silver": "فضي",
+                "gold": "ذهبي",
+                "platinum": "بلاتيني"
+            }
         }
     },
     "patients": {
@@ -155,5 +168,15 @@
         "default_name": "اسمك",
         "default_specialty": "تخصصك",
         "default_clinic": "اسم عيادتك"
+    },
+    "notifications": {
+        "permission_denied": "الإشعارات متوقفة للتطبيق ده من إعدادات الموبايل",
+        "daily_reminder": {
+            "title": "سجلت مرضى النهاردة؟",
+            "body": "خد دقيقة وسجل زيارات النهاردة قبل ما تقفل العيادة.",
+            "settings_section": "التذكيرات",
+            "settings_label": "تذكير يومي بتسجيل المرضى",
+            "settings_subtitle": "كل يوم الساعة {time}"
+        }
     }
 }

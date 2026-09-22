@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:my_clinic/core/routes/app_router.dart';
+import 'package:my_clinic/core/services/daily_reminder_service.dart';
 import 'package:my_clinic/core/theme/controller/theme_cubit.dart';
+import 'package:my_clinic/features/settings/presentation/cubit/daily_reminder_cubit.dart';
 import 'package:my_clinic/features/home/presentation/cubit/home_cubit.dart';
 import 'package:my_clinic/features/patients/data/datasource/patients_local_datasource.dart';
 import 'package:my_clinic/features/patients/data/datasource/patients_local_datasource_impl.dart';
@@ -72,4 +74,10 @@ Future<void> setupInjection() async {
     () => DoctorProfileRepositoryImpl(getIt()),
   );
   getIt.registerFactory<DoctorProfileCubit>(() => DoctorProfileCubit(getIt()));
+
+  // Daily "log today's patients" local reminder notification
+  getIt.registerLazySingleton<DailyReminderService>(
+    () => DailyReminderService(getIt()),
+  );
+  getIt.registerFactory<DailyReminderCubit>(() => DailyReminderCubit(getIt()));
 }

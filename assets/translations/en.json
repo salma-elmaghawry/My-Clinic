@@ -80,6 +80,19 @@
         },
         "recent_patients": {
             "title": "Recent patients"
+        },
+        "milestone": {
+            "tier": "{tier} tier",
+            "count": "{count} patients",
+            "remaining": "{count} more to the next tier",
+            "top_tier": "You've reached the top tier!",
+            "tiers": {
+                "starting": "Starting out",
+                "bronze": "Bronze",
+                "silver": "Silver",
+                "gold": "Gold",
+                "platinum": "Platinum"
+            }
         }
     },
     "patients": {
@@ -155,5 +168,15 @@
         "default_name": "Your Name",
         "default_specialty": "Your Specialty",
         "default_clinic": "Your Clinic"
+    },
+    "notifications": {
+        "permission_denied": "Notifications are turned off in your phone's settings for this app",
+        "daily_reminder": {
+            "title": "Log today's patients?",
+            "body": "Take a minute to add today's visits before you close up.",
+            "settings_section": "Reminders",
+            "settings_label": "Daily patient log reminder",
+            "settings_subtitle": "Every day at {time}"
+        }
     }
 }

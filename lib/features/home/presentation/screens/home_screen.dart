@@ -11,6 +11,7 @@ import 'package:my_clinic/features/home/presentation/cubit/home_cubit.dart';
 import 'package:my_clinic/features/home/presentation/cubit/home_state.dart';
 import 'package:my_clinic/features/home/presentation/widgets/greeting_header.dart';
 import 'package:my_clinic/features/home/presentation/widgets/new_prescription_cta_button.dart';
+import 'package:my_clinic/features/home/presentation/widgets/patient_milestone_card.dart';
 import 'package:my_clinic/features/home/presentation/widgets/quick_nav_grid.dart';
 import 'package:my_clinic/features/home/presentation/widgets/recent_patients_list.dart';
 import 'package:my_clinic/features/home/presentation/widgets/stat_card.dart';
@@ -87,6 +88,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+                  verticalSpace(12),
+                  if (!(state.isLoading && state.recentPatients.isEmpty))
+                    PatientMilestoneCard(
+                      totalPatientsCount: state.totalPatientsCount,
+                    ).fadeInSlideUp(delay: 120.ms),
                   verticalSpace(20),
                   NewPrescriptionCtaButton(
                     onTap: () => context.pushNamed(Routes.newPrescription),
