@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:dr_ahmed/core/utils/app_text_styles.dart';
+import 'package:my_clinic/core/utils/app_text_styles.dart';
 import 'app_colors.dart';
 
 class AppTheme {

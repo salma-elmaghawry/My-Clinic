@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_drug.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_drug.dart';
 
 class PrescriptionDrugListItem extends StatelessWidget {
   final int index;

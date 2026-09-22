@@ -1,10 +1,10 @@
-import 'package:dr_ahmed/core/bloc/base_bloc.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/patient.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/drug.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_drug.dart';
-import 'package:dr_ahmed/features/prescription/presentation/screens/new_prescription_args.dart';
+import 'package:my_clinic/core/bloc/base_bloc.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/patients/domain/entities/patient.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_drug.dart';
+import 'package:my_clinic/features/prescription/presentation/screens/new_prescription_args.dart';
 
 enum NewPrescriptionAction { searchPatients, searchDrugs, saveDraft, generate }
 

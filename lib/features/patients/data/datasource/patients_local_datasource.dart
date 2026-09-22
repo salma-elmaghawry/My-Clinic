@@ -1,4 +1,4 @@
-import 'package:dr_ahmed/features/patients/data/models/patient_model.dart';
+import 'package:my_clinic/features/patients/data/models/patient_model.dart';
 
 /// Local (in-memory) data source for patients. Throws raw exceptions —
 /// never returns an Either; the repository layer is the only try/catch

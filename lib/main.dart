@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:dr_ahmed/app.dart';
-import 'package:dr_ahmed/core/injection/injection_container.dart';
-import 'package:dr_ahmed/core/theme/controller/theme_cubit.dart';
+import 'package:my_clinic/app.dart';
+import 'package:my_clinic/core/injection/injection_container.dart';
+import 'package:my_clinic/core/theme/controller/theme_cubit.dart';
+import 'package:my_clinic/features/profile/presentation/cubit/doctor_profile_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +24,11 @@ void main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<ThemeCubit>(create: (context) => getIt<ThemeCubit>()),
+          BlocProvider<DoctorProfileCubit>(
+            create: (context) => getIt<DoctorProfileCubit>(),
+          ),
         ],
-        child: const DrAhmedApp(),
+        child: const MyClinicApp(),
       ),
     ),
   );

@@ -1,5 +1,5 @@
-import 'package:dr_ahmed/features/prescription/data/models/prescription_model.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_status.dart';
+import 'package:my_clinic/features/prescription/data/models/prescription_model.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_status.dart';
 
 import 'prescriptions_local_datasource.dart';
 

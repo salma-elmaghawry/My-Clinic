@@ -1,11 +1,11 @@
 {
-    "name": "dr_ahmed",
-    "short_name": "dr_ahmed",
+    "name": "My Clinic",
+    "short_name": "My Clinic",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "My Clinic \u2014 smart clinic assistant for every doctor and specialty.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

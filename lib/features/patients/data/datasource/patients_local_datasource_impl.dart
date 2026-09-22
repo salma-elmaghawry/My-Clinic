@@ -1,9 +1,9 @@
-import 'package:dr_ahmed/core/error_handling/exceptions.dart';
-import 'package:dr_ahmed/features/patients/data/models/medical_history_entry_model.dart';
-import 'package:dr_ahmed/features/patients/data/models/next_visit_model.dart';
-import 'package:dr_ahmed/features/patients/data/models/patient_model.dart';
-import 'package:dr_ahmed/features/patients/data/models/treatment_item_model.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/gender.dart';
+import 'package:my_clinic/core/error_handling/exceptions.dart';
+import 'package:my_clinic/features/patients/data/models/medical_history_entry_model.dart';
+import 'package:my_clinic/features/patients/data/models/next_visit_model.dart';
+import 'package:my_clinic/features/patients/data/models/patient_model.dart';
+import 'package:my_clinic/features/patients/data/models/treatment_item_model.dart';
+import 'package:my_clinic/features/patients/domain/entities/gender.dart';
 
 import 'patients_local_datasource.dart';
 

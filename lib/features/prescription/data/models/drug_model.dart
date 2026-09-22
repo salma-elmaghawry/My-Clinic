@@ -1,5 +1,5 @@
-import 'package:dr_ahmed/features/prescription/domain/entities/drug.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/drug_category.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug_category.dart';
 
 class DrugModel {
   final String id;

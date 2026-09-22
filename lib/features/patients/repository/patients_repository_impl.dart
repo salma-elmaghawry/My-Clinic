@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:dr_ahmed/core/error_handling/error_mapper.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/patients/data/datasource/patients_local_datasource.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/patient.dart';
+import 'package:my_clinic/core/error_handling/error_mapper.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/patients/data/datasource/patients_local_datasource.dart';
+import 'package:my_clinic/features/patients/domain/entities/patient.dart';
 
 import 'patients_repository.dart';
 

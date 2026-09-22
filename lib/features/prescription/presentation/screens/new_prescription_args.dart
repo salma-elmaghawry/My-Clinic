@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/gender.dart';
+import 'package:my_clinic/features/patients/domain/entities/gender.dart';
 
 /// Route arguments for [Routes.newPrescription]. Pushed pre-filled from
 /// Patient Detail's "New Prescription" button, or left null when navigated

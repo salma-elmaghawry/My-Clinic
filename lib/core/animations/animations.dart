@@ -15,7 +15,7 @@
 ///
 /// Usage:
 /// ```dart
-/// import 'package:dr_ahmed/core/animations/animations.dart';
+/// import 'package:my_clinic/core/animations/animations.dart';
 ///
 /// // Use extension methods
 /// MyWidget().fadeInSlideUp(delay: 100.ms);

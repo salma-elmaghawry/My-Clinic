@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/gender.dart';
+import 'package:my_clinic/features/patients/domain/entities/gender.dart';
 
 import 'prescription_drug.dart';
 import 'prescription_status.dart';

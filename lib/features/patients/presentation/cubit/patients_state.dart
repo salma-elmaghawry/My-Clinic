@@ -1,6 +1,6 @@
-import 'package:dr_ahmed/core/bloc/base_bloc.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/patient.dart';
+import 'package:my_clinic/core/bloc/base_bloc.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/patients/domain/entities/patient.dart';
 
 enum PatientsAction { fetch, search }
 

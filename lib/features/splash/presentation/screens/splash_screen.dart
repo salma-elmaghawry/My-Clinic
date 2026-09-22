@@ -1,12 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/constants/doctor_profile.dart';
-import 'package:dr_ahmed/core/helpers/extensions.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/core/routes/routes.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/extensions.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/profile/presentation/cubit/doctor_profile_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final logoAssetPath = context.watch<DoctorProfileCubit>().state.profile.logoAssetPath;
     return Scaffold(
       backgroundColor: theme.colorScheme.primary,
       body: Center(
@@ -38,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ClipRRect(
               borderRadius: BorderRadius.circular(24.r),
               child: Image.asset(
-                kDoctorProfile.logoAssetPath,
+                logoAssetPath,
                 width: 120.w,
                 height: 120.w,
                 fit: BoxFit.cover,

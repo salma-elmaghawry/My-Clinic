@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/extensions.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/core/routes/routes.dart';
-import 'package:dr_ahmed/features/patients/presentation/cubit/patients_cubit.dart';
-import 'package:dr_ahmed/features/patients/presentation/cubit/patients_state.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/patient_list_tile.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/patient_search_bar.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/extensions.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/patients/presentation/cubit/patients_cubit.dart';
+import 'package:my_clinic/features/patients/presentation/cubit/patients_state.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/patient_list_tile.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/patient_search_bar.dart';
 
 class PatientsListScreen extends StatefulWidget {
   const PatientsListScreen({super.key});

@@ -1,4 +1,4 @@
-import 'package:dr_ahmed/features/patients/domain/entities/treatment_item.dart';
+import 'package:my_clinic/features/patients/domain/entities/treatment_item.dart';
 
 class TreatmentItemModel {
   final String drugName;

@@ -1,5 +1,5 @@
 {
-    "app_name": "Dr. Ahmed Elmaghawry",
+    "app_name": "My Clinic",
     "common": {
         "ok": "OK",
         "cancel": "Cancel",
@@ -13,6 +13,11 @@
         "coming_soon": {
             "title": "Coming soon",
             "description": "This feature is on the way in a future update."
+        },
+        "not_found": {
+            "title": "Page not found",
+            "description": "That screen doesn't exist or moved.",
+            "go_home": "Go to home"
         }
     },
     "preferences": {
@@ -51,9 +56,6 @@
             "name_required": "Name is required",
             "password_mismatch": "Passwords do not match"
         }
-    },
-    "doctor": {
-        "title": "Vascular Surgeon"
     },
     "nav": {
         "home": "Home",
@@ -136,5 +138,22 @@
             "qr_caption": "Scan to view",
             "share_coming_soon": "Sharing is coming soon"
         }
+    },
+    "profile": {
+        "title": "Doctor & Clinic Profile",
+        "settings_subtitle": "Your name, specialty and clinic name",
+        "subtitle": "This is what your patients and prescriptions will show. Works for any specialty.",
+        "doctor_name_label": "Doctor name",
+        "doctor_name_hint": "e.g. Dr. Sara Youssef",
+        "specialty_label": "Specialty",
+        "specialty_hint": "e.g. Dermatology, Pediatrics, Cardiology...",
+        "specialty_required": "Please enter your specialty",
+        "clinic_name_label": "Clinic name (optional)",
+        "clinic_name_hint": "e.g. Nile Family Clinic",
+        "save": "Save",
+        "saved_snackbar": "Profile updated",
+        "default_name": "Your Name",
+        "default_specialty": "Your Specialty",
+        "default_clinic": "Your Clinic"
     }
 }

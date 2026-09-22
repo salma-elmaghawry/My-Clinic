@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/drug.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
 
 abstract class DrugsRepository {
   Future<Either<Failure, List<Drug>>> getDrugs();

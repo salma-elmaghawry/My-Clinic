@@ -7,4 +7,6 @@ class Routes {
   // prescription
   static const String newPrescription = '/new-prescription';
   static const String prescriptionPreview = '/prescription-preview';
+  // profile
+  static const String editProfile = '/edit-profile';
 }

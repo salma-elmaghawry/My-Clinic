@@ -1,4 +1,4 @@
-import 'package:dr_ahmed/features/patients/domain/entities/next_visit.dart';
+import 'package:my_clinic/features/patients/domain/entities/next_visit.dart';
 
 class NextVisitModel {
   final DateTime dateTime;

@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/routes/app_router.dart';
-import 'package:dr_ahmed/core/routes/routes.dart';
-import 'package:dr_ahmed/core/theme/app_theme.dart';
-import 'package:dr_ahmed/core/theme/controller/theme_cubit.dart';
-import 'package:dr_ahmed/core/theme/controller/theme_state.dart';
+import 'package:my_clinic/core/routes/app_router.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/core/theme/app_theme.dart';
+import 'package:my_clinic/core/theme/controller/theme_cubit.dart';
+import 'package:my_clinic/core/theme/controller/theme_state.dart';
+import 'package:my_clinic/core/widgets/not_found_screen.dart';
 
-class DrAhmedApp extends StatelessWidget {
-  const DrAhmedApp({super.key});
+class MyClinicApp extends StatelessWidget {
+  const MyClinicApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,8 @@ class DrAhmedApp extends StatelessWidget {
                 scrollBehavior: const _NoGlowScrollBehavior(),
                 debugShowCheckedModeBanner: false,
                 onGenerateRoute: AppRouter().generateRoute,
+                onUnknownRoute: (settings) =>
+                    MaterialPageRoute(builder: (_) => const NotFoundScreen()),
                 initialRoute: Routes.splash,
               ),
             );

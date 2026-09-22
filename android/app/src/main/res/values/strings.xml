@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launcher label, English/default. Arabic override lives in
+         values-ar/strings.xml so the app name follows the device locale. -->
+    <string name="app_name">My Clinic</string>
+</resources>

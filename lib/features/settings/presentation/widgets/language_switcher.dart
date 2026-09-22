@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:dr_ahmed/core/injection/injection_container.dart';
+import 'package:my_clinic/core/injection/injection_container.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageSwitcher extends StatelessWidget {

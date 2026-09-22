@@ -1,5 +1,5 @@
-import 'package:dr_ahmed/features/patients/domain/entities/gender.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/patient.dart';
+import 'package:my_clinic/features/patients/domain/entities/gender.dart';
+import 'package:my_clinic/features/patients/domain/entities/patient.dart';
 
 import 'medical_history_entry_model.dart';
 import 'next_visit_model.dart';

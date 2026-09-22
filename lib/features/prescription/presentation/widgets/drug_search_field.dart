@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/drug.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
 
 class DrugSearchField extends StatelessWidget {
   final List<Drug> results;

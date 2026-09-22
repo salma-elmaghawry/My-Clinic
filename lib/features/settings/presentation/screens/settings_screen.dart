@@ -2,11 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/core/widgets/coming_soon_view.dart';
-import 'package:dr_ahmed/features/settings/presentation/widgets/language_switcher.dart';
-import 'package:dr_ahmed/features/settings/presentation/widgets/theme_mode_switcher.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/core/widgets/coming_soon_view.dart';
+import 'package:my_clinic/features/settings/presentation/widgets/language_switcher.dart';
+import 'package:my_clinic/features/settings/presentation/widgets/theme_mode_switcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -25,6 +26,21 @@ class SettingsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Card(
+                    margin: EdgeInsets.zero,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.badge_outlined,
+                        color: theme.colorScheme.primary,
+                      ),
+                      title: Text('profile.title'.tr()),
+                      subtitle: Text('profile.settings_subtitle'.tr()),
+                      trailing: const Icon(Icons.chevron_right_rounded),
+                      onTap: () =>
+                          Navigator.of(context).pushNamed(Routes.editProfile),
+                    ),
+                  ).fadeInSlideUp(),
+                  verticalSpace(20),
                   Text(
                     'preferences.theme'.tr(),
                     style: theme.textTheme.labelLarge,

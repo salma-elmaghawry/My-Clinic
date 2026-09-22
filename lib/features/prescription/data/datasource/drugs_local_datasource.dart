@@ -1,4 +1,4 @@
-import 'package:dr_ahmed/features/prescription/data/models/drug_model.dart';
+import 'package:my_clinic/features/prescription/data/models/drug_model.dart';
 
 abstract class DrugsLocalDataSource {
   Future<List<DrugModel>> getDrugs();

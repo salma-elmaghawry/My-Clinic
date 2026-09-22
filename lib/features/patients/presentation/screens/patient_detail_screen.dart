@@ -2,17 +2,17 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/extensions.dart';
-import 'package:dr_ahmed/core/routes/routes.dart';
-import 'package:dr_ahmed/features/patients/presentation/cubit/patient_detail_cubit.dart';
-import 'package:dr_ahmed/features/patients/presentation/cubit/patient_detail_state.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/current_treatment_list.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/medical_history_list.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/next_visit_card.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/patient_detail_tab_bar.dart';
-import 'package:dr_ahmed/features/patients/presentation/widgets/patient_header_card.dart';
-import 'package:dr_ahmed/features/prescription/presentation/screens/new_prescription_args.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/extensions.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/patients/presentation/cubit/patient_detail_cubit.dart';
+import 'package:my_clinic/features/patients/presentation/cubit/patient_detail_state.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/current_treatment_list.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/medical_history_list.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/next_visit_card.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/patient_detail_tab_bar.dart';
+import 'package:my_clinic/features/patients/presentation/widgets/patient_header_card.dart';
+import 'package:my_clinic/features/prescription/presentation/screens/new_prescription_args.dart';
 
 class PatientDetailScreen extends StatefulWidget {
   final String patientId;

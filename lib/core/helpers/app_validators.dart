@@ -9,6 +9,16 @@ class AppValidators {
     return null;
   }
 
+  /// Generic required-field check with a caller-supplied, already-localized
+  /// message. Useful for free-text fields (like specialty) that don't have
+  /// their own dedicated validator.
+  static String? validateRequired(String? value, String message) {
+    if (value == null || value.trim().isEmpty) {
+      return message;
+    }
+    return null;
+  }
+
   /// Validates the email format using regex
   static String? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {

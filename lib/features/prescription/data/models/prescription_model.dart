@@ -1,6 +1,6 @@
-import 'package:dr_ahmed/features/patients/domain/entities/gender.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_status.dart';
+import 'package:my_clinic/features/patients/domain/entities/gender.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_status.dart';
 
 import 'prescription_drug_model.dart';
 

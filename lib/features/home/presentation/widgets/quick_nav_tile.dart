@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
 
 class QuickNavTile extends StatelessWidget {
   final IconData icon;

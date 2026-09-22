@@ -43,3 +43,13 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Release signing — real credentials, never commit these.
+/android/key.properties
+*.jks
+*.keystore
+
+# Local environment / secrets (Supabase URL & anon key, API keys, ...)
+.env
+.env.*
+!.env.example

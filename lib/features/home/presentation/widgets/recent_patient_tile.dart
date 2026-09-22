@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/gender.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/patient.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/features/patients/domain/entities/gender.dart';
+import 'package:my_clinic/features/patients/domain/entities/patient.dart';
 
 class RecentPatientTile extends StatelessWidget {
   final Patient patient;

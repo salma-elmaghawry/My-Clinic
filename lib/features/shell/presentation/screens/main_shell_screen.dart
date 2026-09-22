@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dr_ahmed/core/helpers/extensions.dart';
-import 'package:dr_ahmed/core/injection/injection_container.dart';
-import 'package:dr_ahmed/core/routes/routes.dart';
-import 'package:dr_ahmed/features/appointments/presentation/screens/appointments_screen.dart';
-import 'package:dr_ahmed/features/home/presentation/cubit/home_cubit.dart';
-import 'package:dr_ahmed/features/home/presentation/screens/home_screen.dart';
-import 'package:dr_ahmed/features/patients/presentation/cubit/patients_cubit.dart';
-import 'package:dr_ahmed/features/patients/presentation/screens/patients_list_screen.dart';
-import 'package:dr_ahmed/features/settings/presentation/screens/settings_screen.dart';
+import 'package:my_clinic/core/helpers/extensions.dart';
+import 'package:my_clinic/core/injection/injection_container.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/appointments/presentation/screens/appointments_screen.dart';
+import 'package:my_clinic/features/home/presentation/cubit/home_cubit.dart';
+import 'package:my_clinic/features/home/presentation/screens/home_screen.dart';
+import 'package:my_clinic/features/patients/presentation/cubit/patients_cubit.dart';
+import 'package:my_clinic/features/patients/presentation/screens/patients_list_screen.dart';
+import 'package:my_clinic/features/settings/presentation/screens/settings_screen.dart';
 
 import '../widgets/main_bottom_nav_bar.dart';
 

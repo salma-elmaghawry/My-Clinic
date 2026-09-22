@@ -1,5 +1,5 @@
 {
-    "app_name": "د. أحمد المغاوري",
+    "app_name": "عيادتي",
     "common": {
         "ok": "حسناً",
         "cancel": "إلغاء",
@@ -13,6 +13,11 @@
         "coming_soon": {
             "title": "قريباً",
             "description": "هذه الميزة قادمة في تحديث لاحق."
+        },
+        "not_found": {
+            "title": "الصفحة غير موجودة",
+            "description": "الشاشة دي مش موجودة أو اتغيرت.",
+            "go_home": "العودة للرئيسية"
         }
     },
     "preferences": {
@@ -51,9 +56,6 @@
             "name_required": "الاسم مطلوب",
             "password_mismatch": "كلمتا المرور غير متطابقتين"
         }
-    },
-    "doctor": {
-        "title": "استشاري جراحة الأوعية الدموية"
     },
     "nav": {
         "home": "الرئيسية",
@@ -136,5 +138,22 @@
             "qr_caption": "امسح للعرض",
             "share_coming_soon": "المشاركة قريباً"
         }
+    },
+    "profile": {
+        "title": "بيانات الطبيب والعيادة",
+        "settings_subtitle": "اسمك وتخصصك واسم عيادتك",
+        "subtitle": "دي البيانات اللي هتظهر لمرضاك وفي الروشتة. تشتغل مع أي تخصص.",
+        "doctor_name_label": "اسم الدكتور",
+        "doctor_name_hint": "مثال: د. سارة يوسف",
+        "specialty_label": "التخصص",
+        "specialty_hint": "مثال: جلدية، أطفال، قلب...",
+        "specialty_required": "من فضلك اكتب تخصصك",
+        "clinic_name_label": "اسم العيادة (اختياري)",
+        "clinic_name_hint": "مثال: عيادة النيل",
+        "save": "حفظ",
+        "saved_snackbar": "تم تحديث البيانات",
+        "default_name": "اسمك",
+        "default_specialty": "تخصصك",
+        "default_clinic": "اسم عيادتك"
     }
 }

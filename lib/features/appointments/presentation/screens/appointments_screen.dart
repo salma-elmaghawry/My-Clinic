@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:dr_ahmed/core/widgets/coming_soon_view.dart';
+import 'package:my_clinic/core/widgets/coming_soon_view.dart';
 
 class AppointmentsScreen extends StatelessWidget {
   const AppointmentsScreen({super.key});

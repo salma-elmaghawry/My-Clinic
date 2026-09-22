@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:dr_ahmed/core/error_handling/error_mapper.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/prescription/data/datasource/drugs_local_datasource.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/drug.dart';
+import 'package:my_clinic/core/error_handling/error_mapper.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/prescription/data/datasource/drugs_local_datasource.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
 
 import 'drugs_repository.dart';
 

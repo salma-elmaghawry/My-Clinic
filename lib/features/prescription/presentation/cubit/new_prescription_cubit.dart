@@ -1,16 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dr_ahmed/core/bloc/base_bloc.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/patients/domain/entities/patient.dart';
-import 'package:dr_ahmed/features/patients/repository/patients_repository.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/drug.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_drug.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_status.dart';
-import 'package:dr_ahmed/features/prescription/presentation/screens/new_prescription_args.dart';
-import 'package:dr_ahmed/features/prescription/repository/drugs_repository.dart';
-import 'package:dr_ahmed/features/prescription/repository/prescriptions_repository.dart';
+import 'package:my_clinic/core/bloc/base_bloc.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/patients/domain/entities/patient.dart';
+import 'package:my_clinic/features/patients/repository/patients_repository.dart';
+import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_drug.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_status.dart';
+import 'package:my_clinic/features/prescription/presentation/screens/new_prescription_args.dart';
+import 'package:my_clinic/features/prescription/repository/drugs_repository.dart';
+import 'package:my_clinic/features/prescription/repository/prescriptions_repository.dart';
 
 import 'new_prescription_state.dart';
 

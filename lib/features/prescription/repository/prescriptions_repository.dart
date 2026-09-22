@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:dr_ahmed/core/error_handling/failures.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription.dart';
+import 'package:my_clinic/core/error_handling/failures.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription.dart';
 
 abstract class PrescriptionsRepository {
   Future<Either<Failure, Prescription>> saveDraft(Prescription prescription);

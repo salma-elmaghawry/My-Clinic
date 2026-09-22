@@ -1,4 +1,4 @@
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription_drug.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription_drug.dart';
 
 class PrescriptionDrugModel {
   final String drugId;

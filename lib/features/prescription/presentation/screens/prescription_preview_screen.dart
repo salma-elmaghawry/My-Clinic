@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/features/prescription/domain/entities/prescription.dart';
-import 'package:dr_ahmed/features/prescription/presentation/widgets/prescription_drug_list_item.dart';
-import 'package:dr_ahmed/features/prescription/presentation/widgets/prescription_letterhead.dart';
-import 'package:dr_ahmed/features/prescription/presentation/widgets/prescription_qr_placeholder.dart';
-import 'package:dr_ahmed/features/prescription/presentation/widgets/prescription_share_button.dart';
-import 'package:dr_ahmed/features/prescription/presentation/widgets/prescription_signature_block.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/features/prescription/domain/entities/prescription.dart';
+import 'package:my_clinic/features/prescription/presentation/widgets/prescription_drug_list_item.dart';
+import 'package:my_clinic/features/prescription/presentation/widgets/prescription_letterhead.dart';
+import 'package:my_clinic/features/prescription/presentation/widgets/prescription_qr_placeholder.dart';
+import 'package:my_clinic/features/prescription/presentation/widgets/prescription_share_button.dart';
+import 'package:my_clinic/features/prescription/presentation/widgets/prescription_signature_block.dart';
 
 /// Receives its [Prescription] via route arguments — no cubit needed, this
 /// screen is a pure read-only view of an already-generated prescription.

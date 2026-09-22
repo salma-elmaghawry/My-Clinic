@@ -1,4 +1,4 @@
-import 'package:dr_ahmed/features/patients/domain/entities/medical_history_entry.dart';
+import 'package:my_clinic/features/patients/domain/entities/medical_history_entry.dart';
 
 class MedicalHistoryEntryModel {
   final String condition;

@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dr_ahmed/core/animations/animations.dart';
-import 'package:dr_ahmed/core/helpers/extensions.dart';
-import 'package:dr_ahmed/core/helpers/spacing.dart';
-import 'package:dr_ahmed/core/routes/routes.dart';
-import 'package:dr_ahmed/features/home/presentation/cubit/home_cubit.dart';
-import 'package:dr_ahmed/features/home/presentation/cubit/home_state.dart';
-import 'package:dr_ahmed/features/home/presentation/widgets/greeting_header.dart';
-import 'package:dr_ahmed/features/home/presentation/widgets/new_prescription_cta_button.dart';
-import 'package:dr_ahmed/features/home/presentation/widgets/quick_nav_grid.dart';
-import 'package:dr_ahmed/features/home/presentation/widgets/recent_patients_list.dart';
-import 'package:dr_ahmed/features/home/presentation/widgets/stat_card.dart';
+import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/helpers/extensions.dart';
+import 'package:my_clinic/core/helpers/spacing.dart';
+import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/home/presentation/cubit/home_cubit.dart';
+import 'package:my_clinic/features/home/presentation/cubit/home_state.dart';
+import 'package:my_clinic/features/home/presentation/widgets/greeting_header.dart';
+import 'package:my_clinic/features/home/presentation/widgets/new_prescription_cta_button.dart';
+import 'package:my_clinic/features/home/presentation/widgets/quick_nav_grid.dart';
+import 'package:my_clinic/features/home/presentation/widgets/recent_patients_list.dart';
+import 'package:my_clinic/features/home/presentation/widgets/stat_card.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback onNavigateToPatients;

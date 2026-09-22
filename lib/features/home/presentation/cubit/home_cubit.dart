@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dr_ahmed/core/bloc/base_bloc.dart';
-import 'package:dr_ahmed/features/patients/repository/patients_repository.dart';
+import 'package:my_clinic/core/bloc/base_bloc.dart';
+import 'package:my_clinic/features/patients/repository/patients_repository.dart';
 
 import 'home_state.dart';
 
