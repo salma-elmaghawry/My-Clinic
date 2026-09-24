@@ -10,3 +10,8 @@ class DrugNotFoundException implements Exception {
   final String message;
   const DrugNotFoundException([this.message = 'Drug not found']);
 }
+
+class EmailAlreadyInUseException implements Exception {
+  final String message;
+  const EmailAlreadyInUseException([this.message = 'Email already in use']);
+}

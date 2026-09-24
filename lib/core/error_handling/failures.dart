@@ -31,6 +31,14 @@ class TooManyRequestsFailure extends Failure {
   const TooManyRequestsFailure({required super.message});
 }
 
+class WeakPasswordFailure extends Failure {
+  const WeakPasswordFailure({required super.message});
+}
+
+class SamePasswordFailure extends Failure {
+  const SamePasswordFailure({required super.message});
+}
+
 // Network failures
 
 class NetworkFailure extends Failure {

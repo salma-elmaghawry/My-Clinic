@@ -28,7 +28,10 @@ class CurrentTreatmentList extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.medication_outlined, color: theme.colorScheme.tertiary),
+                Icon(
+                  Icons.medication_outlined,
+                  color: theme.colorScheme.tertiary,
+                ),
                 horizontalSpace(10),
                 Expanded(
                   child: Column(

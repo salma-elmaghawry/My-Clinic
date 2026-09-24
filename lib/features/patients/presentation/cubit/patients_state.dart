@@ -38,5 +38,12 @@ class PatientsState extends BaseState {
   }
 
   @override
-  List<Object?> get props => [status, message, patients, query, failure, action];
+  List<Object?> get props => [
+    status,
+    message,
+    patients,
+    query,
+    failure,
+    action,
+  ];
 }

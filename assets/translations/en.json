@@ -38,7 +38,9 @@
             "email_in_use": "This email is already registered",
             "rate_limit_exceeded": "Too many requests. Please wait a while before trying again",
             "invalid_otp": "Code has expired or is invalid",
-            "email_not_confirmed": "Email not confirmed"
+            "email_not_confirmed": "Email not confirmed",
+            "weak_password": "Password is too weak. Use at least 8 characters with letters and numbers",
+            "same_password": "New password must be different from your current one"
         },
         "login": {
             "email_label": "Email",
@@ -48,11 +50,57 @@
             "password_label": "Password",
             "password_hint": "Enter your password",
             "password_required": "Password is required",
-            "password_length": "Password must be at least 6 characters"
+            "password_length": "Password must be at least 6 characters",
+            "title": "Welcome back",
+            "subtitle": "Sign in to your clinic account",
+            "forgot_password": "Forgot password?",
+            "submit": "Sign in",
+            "no_account": "Don't have an account?",
+            "sign_up_link": "Create account"
         },
         "signup": {
             "name_required": "Name is required",
-            "password_mismatch": "Passwords do not match"
+            "password_mismatch": "Passwords do not match",
+            "title": "Create your account",
+            "subtitle": "Set up My Clinic for your practice in a minute",
+            "name_label": "Full name",
+            "name_hint": "e.g. Dr. Ahmed Hassan",
+            "password_hint": "At least 8 characters",
+            "password_length": "Password must be at least 8 characters",
+            "confirm_password_label": "Confirm password",
+            "confirm_password_hint": "Re-enter your password",
+            "submit": "Create account",
+            "have_account": "Already have an account?",
+            "sign_in_link": "Sign in"
+        },
+        "verify": {
+            "title": "Verify your email",
+            "subtitle": "Enter the code we sent to {}",
+            "code_label": "Verification code",
+            "code_hint": "6-digit code",
+            "code_required": "Code is required",
+            "code_invalid": "Enter the code from the email",
+            "submit": "Verify",
+            "no_code": "Didn't get the code?",
+            "resend": "Resend",
+            "resent_snackbar": "A new code is on its way"
+        },
+        "forgot": {
+            "title": "Reset your password",
+            "subtitle": "Enter your account email and we'll send you a reset code",
+            "send_code": "Send code",
+            "code_sent_subtitle": "Enter the code we sent to {} and choose a new password",
+            "code_sent_snackbar": "Reset code sent. Check your inbox",
+            "new_password_label": "New password",
+            "submit": "Reset password",
+            "success_snackbar": "Password updated. You are signed in"
+        },
+        "sign_out": {
+            "title": "Sign out",
+            "subtitle": "Sign out of this device",
+            "confirm_title": "Sign out?",
+            "confirm_message": "You will need your email and password to sign back in.",
+            "confirm": "Sign out"
         }
     },
     "nav": {

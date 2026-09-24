@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:my_clinic/app.dart';
 import 'package:my_clinic/core/config/supabase_config.dart';
+import 'package:my_clinic/core/demo/demo_data_seeder.dart';
 import 'package:my_clinic/core/injection/injection_container.dart';
 import 'package:my_clinic/core/services/daily_reminder_service.dart';
 import 'package:my_clinic/core/theme/controller/theme_cubit.dart';
@@ -16,10 +17,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  // No-op until a Supabase project is actually created and its URL/anon
-  // key are passed via --dart-define (see docs/SUPABASE_SETUP.md). Nothing
-  // reads from Supabase yet — this only makes Supabase.instance.client
-  // available for the data-layer migration that comes next.
+  // Skipped until the Supabase URL and publishable key are passed via
+  // --dart-define (see docs/SUPABASE_SETUP.md). When skipped, auth is
+  // bypassed and the app runs fully on-device.
   if (SupabaseConfig.isConfigured) {
     await Supabase.initialize(
       url: SupabaseConfig.url,
@@ -28,6 +28,10 @@ void main() async {
   }
 
   await setupInjection();
+
+  // Only with --dart-define=DEMO_DATA=true|reset, for demo videos and
+  // screenshots. A normal build skips this entirely.
+  await DemoDataSeeder.seedIfRequested(getIt<SharedPreferences>());
 
   // Re-arm the daily reminder if the doctor had already turned it on — the
   // OS can drop scheduled notifications across an app update or reboot.

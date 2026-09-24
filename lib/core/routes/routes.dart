@@ -1,5 +1,10 @@
 class Routes {
   static const String splash = '/splash';
+  // auth
+  static const String login = '/login';
+  static const String signUp = '/sign-up';
+  static const String verifyEmail = '/verify-email';
+  static const String forgotPassword = '/forgot-password';
   // main shell
   static const String main = '/main';
   // patients

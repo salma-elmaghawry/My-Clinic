@@ -80,7 +80,7 @@ class _PatientPickerSheet extends StatelessWidget {
                         title: Text(patient.name),
                         subtitle: patient.phone == null
                             ? null
-                            : Text(patient.phone!),
+                            : Text('\u202A${patient.phone!}\u202C'),
                         onTap: () => Navigator.of(context).pop(patient),
                       );
                     },

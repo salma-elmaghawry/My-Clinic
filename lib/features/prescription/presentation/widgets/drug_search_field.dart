@@ -86,49 +86,54 @@ class _DrugSearchFieldState extends State<DrugSearchField> {
               borderRadius: BorderRadius.circular(12.r),
               border: Border.all(color: theme.dividerColor),
             ),
-            child: ListView(
-              shrinkWrap: true,
-              padding: EdgeInsets.symmetric(vertical: 4.h),
-              children: [
-                if (showAddCustom)
-                  ListTile(
-                    dense: true,
-                    leading: Icon(
-                      Icons.add_box_outlined,
-                      color: theme.colorScheme.primary,
-                    ),
-                    title: Text(
-                      'prescription.new.add_custom_drug'.tr(
-                        namedArgs: {'name': query},
-                      ),
-                      style: theme.textTheme.bodyMedium?.copyWith(
+            // Transparent Material so the tiles' ink splashes paint above
+            // this box's background instead of being hidden by it.
+            child: Material(
+              type: MaterialType.transparency,
+              child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(vertical: 4.h),
+                children: [
+                  if (showAddCustom)
+                    ListTile(
+                      dense: true,
+                      leading: Icon(
+                        Icons.add_box_outlined,
                         color: theme.colorScheme.primary,
                       ),
+                      title: Text(
+                        'prescription.new.add_custom_drug'.tr(
+                          namedArgs: {'name': query},
+                        ),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.primary,
+                        ),
+                      ),
+                      onTap: () {
+                        widget.onAddCustom(query);
+                        _clear();
+                      },
                     ),
-                    onTap: () {
-                      widget.onAddCustom(query);
-                      _clear();
-                    },
-                  ),
-                ...widget.results.map(
-                  (drug) => ListTile(
-                    dense: true,
-                    title: Text(drug.name, style: theme.textTheme.bodyMedium),
-                    subtitle: Text(
-                      [
-                        drug.genericName,
-                        drug.commonDose,
-                      ].where((s) => s.isNotEmpty).join(' · '),
-                      style: theme.textTheme.bodySmall,
+                  ...widget.results.map(
+                    (drug) => ListTile(
+                      dense: true,
+                      title: Text(drug.name, style: theme.textTheme.bodyMedium),
+                      subtitle: Text(
+                        [
+                          drug.genericName,
+                          drug.commonDose,
+                        ].where((s) => s.isNotEmpty).join(' · '),
+                        style: theme.textTheme.bodySmall,
+                      ),
+                      trailing: const Icon(Icons.add_circle_outline),
+                      onTap: () {
+                        widget.onSelect(drug);
+                        _clear();
+                      },
                     ),
-                    trailing: const Icon(Icons.add_circle_outline),
-                    onTap: () {
-                      widget.onSelect(drug);
-                      _clear();
-                    },
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ).fadeInSlideUp(),
       ],

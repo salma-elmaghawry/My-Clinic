@@ -30,7 +30,9 @@ class PatientHeaderCard extends StatelessWidget {
             backgroundColor: theme.colorScheme.primary,
             child: Text(
               patient.name.isNotEmpty ? patient.name[0].toUpperCase() : '?',
-              style: theme.textTheme.displaySmall?.copyWith(color: Colors.white),
+              style: theme.textTheme.displaySmall?.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
           horizontalSpace(14),
@@ -48,7 +50,9 @@ class PatientHeaderCard extends StatelessWidget {
                 if (patient.phone != null) ...[
                   verticalSpace(2),
                   Text(
-                    patient.phone!,
+                    // Left-to-right embedding keeps the digit groups in
+                    // order inside Arabic (right-to-left) text.
+                    '\u202A${patient.phone!}\u202C',
                     style: theme.textTheme.bodySmall,
                     textAlign: TextAlign.start,
                   ),

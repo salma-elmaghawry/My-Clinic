@@ -4,9 +4,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_clinic/core/animations/animations.dart';
+import 'package:my_clinic/core/config/supabase_config.dart';
 import 'package:my_clinic/core/helpers/extensions.dart';
 import 'package:my_clinic/core/helpers/spacing.dart';
 import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:my_clinic/features/profile/presentation/cubit/doctor_profile_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,9 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(milliseconds: 1200), () {
       if (mounted) {
-        context.pushReplacementNamed(Routes.main);
+        context.pushReplacementNamed(_nextRoute());
       }
     });
+  }
+
+  String _nextRoute() {
+    if (!SupabaseConfig.isConfigured) return Routes.main;
+    return context.read<AuthCubit>().isSignedIn ? Routes.main : Routes.login;
   }
 
   @override

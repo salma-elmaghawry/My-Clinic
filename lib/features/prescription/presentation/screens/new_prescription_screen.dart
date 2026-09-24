@@ -211,23 +211,31 @@ class _PatientPicker extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
               border: Border.all(color: theme.dividerColor),
             ),
-            child: ListView.separated(
-              shrinkWrap: true,
-              padding: EdgeInsets.symmetric(vertical: 4.h),
-              itemCount: state.patientResults.length,
-              separatorBuilder: (_, _) => Divider(height: 1.h),
-              itemBuilder: (context, index) {
-                final Patient patient = state.patientResults[index];
-                return ListTile(
-                  dense: true,
-                  title: Text(patient.name, style: theme.textTheme.bodyMedium),
-                  subtitle: Text(
-                    '${patient.age} · ${patient.gender == Gender.male ? 'patients.gender.male'.tr() : 'patients.gender.female'.tr()}',
-                    style: theme.textTheme.bodySmall,
-                  ),
-                  onTap: () => cubit.selectPatient(patient),
-                );
-              },
+            // Transparent Material so the tiles' ink splashes paint above
+            // this box's background instead of being hidden by it.
+            child: Material(
+              type: MaterialType.transparency,
+              child: ListView.separated(
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(vertical: 4.h),
+                itemCount: state.patientResults.length,
+                separatorBuilder: (_, _) => Divider(height: 1.h),
+                itemBuilder: (context, index) {
+                  final Patient patient = state.patientResults[index];
+                  return ListTile(
+                    dense: true,
+                    title: Text(
+                      patient.name,
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    subtitle: Text(
+                      '${patient.age} · ${patient.gender == Gender.male ? 'patients.gender.male'.tr() : 'patients.gender.female'.tr()}',
+                      style: theme.textTheme.bodySmall,
+                    ),
+                    onTap: () => cubit.selectPatient(patient),
+                  );
+                },
+              ),
             ),
           ).fadeInSlideUp(),
       ],

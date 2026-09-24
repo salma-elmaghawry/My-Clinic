@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:my_clinic/core/routes/app_router.dart';
 import 'package:my_clinic/core/services/daily_reminder_service.dart';
 import 'package:my_clinic/core/storage/clinic_data_events.dart';
@@ -10,6 +11,11 @@ import 'package:my_clinic/features/appointments/presentation/cubit/appointment_f
 import 'package:my_clinic/features/appointments/presentation/cubit/appointments_cubit.dart';
 import 'package:my_clinic/features/appointments/repository/appointments_repository.dart';
 import 'package:my_clinic/features/appointments/repository/appointments_repository_impl.dart';
+import 'package:my_clinic/features/auth/data/datasource/auth_remote_datasource.dart';
+import 'package:my_clinic/features/auth/data/datasource/auth_remote_datasource_impl.dart';
+import 'package:my_clinic/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:my_clinic/features/auth/repository/auth_repository.dart';
+import 'package:my_clinic/features/auth/repository/auth_repository_impl.dart';
 import 'package:my_clinic/features/drug_database/presentation/cubit/drug_database_cubit.dart';
 import 'package:my_clinic/features/patients/presentation/cubit/patient_form_cubit.dart';
 import 'package:my_clinic/features/stats/presentation/cubit/stats_cubit.dart';
@@ -46,6 +52,16 @@ Future<void> setupInjection() async {
   getIt.registerLazySingleton(() => AppRouter());
   getIt.registerFactory<ThemeCubit>(() => ThemeCubit(getIt()));
   getIt.registerLazySingleton<ClinicDataEvents>(() => ClinicDataEvents());
+
+  // Auth feature: only resolved when SupabaseConfig.isConfigured.
+  getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
+  getIt.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDataSourceImpl(getIt()),
+  );
+  getIt.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(getIt()),
+  );
+  getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt()));
 
   // Patients feature
   getIt.registerLazySingleton<PatientsLocalDataSource>(

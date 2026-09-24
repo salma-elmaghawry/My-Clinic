@@ -45,7 +45,52 @@ With no `--dart-define` passed, `SupabaseConfig.isConfigured` is false,
 exactly as it does today — this is safe to merge and ship before the
 project even exists.
 
-## 3. What's NOT done yet (the next pass)
+## 3. Authentication (email + password)
+
+Auth is implemented in `lib/features/auth/`. It only turns on when the two
+`--dart-define` values above are passed. Without them the splash goes
+straight to the home screen, as before.
+
+Flow:
+
+- The splash sends a signed-out doctor to **Sign in**. A saved session skips it.
+- **Create account** asks for name, email and password. The name is stored
+  in the user's metadata, and the `handle_new_doctor` trigger copies it into
+  `public.doctors.name`. It is also saved to the on-device profile.
+- If **Confirm email** is on, the doctor lands on **Verify your email** and
+  types the code from the email. Signing in with an unconfirmed email also
+  goes there.
+- **Forgot password** sends a code, then takes the code plus a new password.
+  The doctor ends up signed in.
+- **Settings > Sign out** ends the session and returns to Sign in.
+
+Codes are typed into the app instead of opening links, so no deep-link setup
+(Android intent filters, iOS URL schemes, redirect URLs) is needed.
+
+### Dashboard settings this flow needs
+
+1. **Authentication > Sign In / Providers > Email**: keep Email enabled.
+   "Confirm email" can be on or off. The app handles both.
+2. **Authentication > Emails > Templates**: the default templates only
+   contain a link. Add the code to two of them:
+   - **Confirm signup**: add `{{ .Token }}`, for example
+     `<p>Your My Clinic code: <strong>{{ .Token }}</strong></p>`
+   - **Reset password**: add `{{ .Token }}` the same way.
+3. **Authentication > Sign In / Providers > Email > Email OTP length**:
+   the app accepts 6 to 10 digits, so the default of 6 works.
+4. The built-in email sender is rate-limited and meant for testing. Before
+   real doctors sign up, set a custom SMTP server under
+   **Authentication > Emails > SMTP Settings**.
+5. If you ran `supabase/schema.sql` before this change, run it again. It is
+   idempotent, and the re-run updates `handle_new_doctor` so it copies the name.
+
+### Known gap
+
+Patients, prescriptions and appointments are still stored on the device,
+not per account. Two doctors who sign in on the same phone see the same
+local data until the Supabase datasources below replace the local ones.
+
+## 4. What's NOT done yet (the next pass)
 
 Creating the project and running the schema does **not** by itself move any
 data. These local datasources still serve on-device data:
@@ -58,11 +103,7 @@ data. These local datasources still serve on-device data:
 
 The intended next step, sized as its own piece of work:
 
-1. **Add Supabase Auth** (email/password or phone OTP) as a real sign-in
-   screen — `assets/translations/*.json` already has the `auth.*` copy
-   keys reserved for this, and `core/error_handling/failures.dart`
-   already has the matching `Failure` subclasses
-   (`InvalidCredentialsFailure`, `EmailAlreadyInUseFailure`, etc.).
+1. ~~Add Supabase Auth~~ Done, see section 3.
 2. **Write one new datasource class per feature**
    (`PatientsSupabaseDataSource`, `PrescriptionsSupabaseDataSource`,
    `AppointmentsSupabaseDataSource`, ...)

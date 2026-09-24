@@ -44,6 +44,27 @@ class AppValidators {
     return null;
   }
 
+  static String? validateNewPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'auth.login.password_required'.tr();
+    }
+    if (!hasMinimumLength(value)) {
+      return 'auth.signup.password_length'.tr();
+    }
+    return null;
+  }
+
+  static String? validateOtpCode(String? value) {
+    final code = value?.trim() ?? '';
+    if (code.isEmpty) {
+      return 'auth.verify.code_required'.tr();
+    }
+    if (!RegExp(r'^\d{6,10}$').hasMatch(code)) {
+      return 'auth.verify.code_invalid'.tr();
+    }
+    return null;
+  }
+
   /// Validates that the confirm password matches the password
   static String? validateConfirmPassword(String? value, String password) {
     if (value == null || value.isEmpty) {

@@ -45,7 +45,11 @@ class PrescriptionDrugListItem extends StatelessWidget {
                 ),
                 verticalSpace(2),
                 Text(
-                  '${drug.frequency} · ${drug.duration} · ${drug.whenToTake}',
+                  [
+                    drug.frequency,
+                    drug.duration,
+                    drug.whenToTake,
+                  ].where((s) => s.trim().isNotEmpty).join(' · '),
                   style: theme.textTheme.bodySmall,
                   textAlign: TextAlign.start,
                 ),

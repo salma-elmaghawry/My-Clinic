@@ -24,6 +24,10 @@ class TreatmentItemModel {
   }
 
   TreatmentItem toEntity() {
-    return TreatmentItem(drugName: drugName, frequency: frequency, notes: notes);
+    return TreatmentItem(
+      drugName: drugName,
+      frequency: frequency,
+      notes: notes,
+    );
   }
 }

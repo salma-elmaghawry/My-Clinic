@@ -10,7 +10,11 @@ class PatientListTile extends StatelessWidget {
   final Patient patient;
   final VoidCallback onTap;
 
-  const PatientListTile({super.key, required this.patient, required this.onTap});
+  const PatientListTile({
+    super.key,
+    required this.patient,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,9 @@ class PatientListTile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 22.r,
-              backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.12),
+              backgroundColor: theme.colorScheme.primary.withValues(
+                alpha: 0.12,
+              ),
               child: Text(
                 patient.name.isNotEmpty ? patient.name[0].toUpperCase() : '?',
                 style: theme.textTheme.labelLarge?.copyWith(

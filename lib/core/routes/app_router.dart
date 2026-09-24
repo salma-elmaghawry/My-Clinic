@@ -6,6 +6,11 @@ import 'package:my_clinic/features/appointments/presentation/cubit/appointment_f
 import 'package:my_clinic/features/appointments/presentation/cubit/appointments_cubit.dart';
 import 'package:my_clinic/features/appointments/presentation/screens/appointment_form_args.dart';
 import 'package:my_clinic/features/appointments/presentation/screens/appointment_form_screen.dart';
+import 'package:my_clinic/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:my_clinic/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:my_clinic/features/auth/presentation/screens/login_screen.dart';
+import 'package:my_clinic/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:my_clinic/features/auth/presentation/screens/verify_email_screen.dart';
 import 'package:my_clinic/features/drug_database/presentation/cubit/drug_database_cubit.dart';
 import 'package:my_clinic/features/drug_database/presentation/screens/drug_database_screen.dart';
 import 'package:my_clinic/features/patients/domain/entities/patient.dart';
@@ -30,8 +35,34 @@ class AppRouter {
   // instead of this switch showing a raw, unstyled fallback screen itself.
   Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/':
       case Routes.splash:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return MaterialPageRoute(
+          builder: (_) => _withAuthCubit(const SplashScreen()),
+        );
+
+      case Routes.login:
+        return MaterialPageRoute(
+          builder: (_) => _withAuthCubit(const LoginScreen()),
+        );
+
+      case Routes.signUp:
+        return MaterialPageRoute(
+          builder: (_) => _withAuthCubit(const SignUpScreen()),
+        );
+
+      case Routes.verifyEmail:
+        final email = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => _withAuthCubit(VerifyEmailScreen(email: email)),
+        );
+
+      case Routes.forgotPassword:
+        final email = settings.arguments as String? ?? '';
+        return MaterialPageRoute(
+          builder: (_) =>
+              _withAuthCubit(ForgotPasswordScreen(initialEmail: email)),
+        );
 
       case Routes.main:
         return MaterialPageRoute(builder: (_) => const MainShellScreen());
@@ -110,5 +141,12 @@ class AppRouter {
       default:
         return null;
     }
+  }
+
+  Widget _withAuthCubit(Widget screen) {
+    return BlocProvider<AuthCubit>(
+      create: (_) => getIt<AuthCubit>(),
+      child: screen,
+    );
   }
 }
