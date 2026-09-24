@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to take your profile photo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to choose your profile photo.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Used to dictate the diagnosis by voice instead of typing.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:my_clinic/core/error_handling/error_mapper.dart';
 import 'package:my_clinic/core/error_handling/failures.dart';
 import 'package:my_clinic/features/prescription/data/datasource/drugs_local_datasource.dart';
+import 'package:my_clinic/features/prescription/data/models/drug_model.dart';
 import 'package:my_clinic/features/prescription/domain/entities/drug.dart';
 
 import 'drugs_repository.dart';
@@ -26,6 +27,28 @@ class DrugsRepositoryImpl implements DrugsRepository {
     try {
       final models = await _localDataSource.searchDrugs(query);
       return Right(models.map((e) => e.toEntity()).toList());
+    } catch (e) {
+      return Left(ErrorMapper.map(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Drug>> addCustomDrug(Drug drug) async {
+    try {
+      final model = await _localDataSource.addCustomDrug(
+        DrugModel.fromEntity(drug),
+      );
+      return Right(model.toEntity());
+    } catch (e) {
+      return Left(ErrorMapper.map(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> deleteCustomDrug(String id) async {
+    try {
+      await _localDataSource.deleteCustomDrug(id);
+      return const Right(unit);
     } catch (e) {
       return Left(ErrorMapper.map(e));
     }

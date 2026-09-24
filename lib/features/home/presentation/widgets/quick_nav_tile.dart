@@ -47,12 +47,16 @@ class QuickNavTile extends StatelessWidget {
               child: Icon(icon, color: color, size: 22.sp),
             ),
             verticalSpace(8),
-            Text(
-              label,
-              style: theme.textTheme.labelMedium,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            // Flexible so a two-line label (common in Arabic) shrinks to the
+            // grid cell's fixed height instead of overflowing it.
+            Flexible(
+              child: Text(
+                label,
+                style: theme.textTheme.labelMedium,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

@@ -34,8 +34,8 @@ drop policy if exists "Doctors manage their own profile" on public.doctors;
 create policy "Doctors manage their own profile"
   on public.doctors
   for all
-  using (auth.uid() = id)
-  with check (auth.uid() = id);
+  using ((select auth.uid()) = id)
+  with check ((select auth.uid()) = id);
 
 -- ── patients ─────────────────────────────────────────────────────────────
 create table if not exists public.patients (
@@ -61,8 +61,8 @@ drop policy if exists "Doctors manage their own patients" on public.patients;
 create policy "Doctors manage their own patients"
   on public.patients
   for all
-  using (auth.uid() = doctor_id)
-  with check (auth.uid() = doctor_id);
+  using ((select auth.uid()) = doctor_id)
+  with check ((select auth.uid()) = doctor_id);
 
 -- ── patient_medical_history ─────────────────────────────────────────────
 create table if not exists public.patient_medical_history (
@@ -82,8 +82,8 @@ drop policy if exists "Doctors manage their own patients' history" on public.pat
 create policy "Doctors manage their own patients' history"
   on public.patient_medical_history
   for all
-  using (auth.uid() = doctor_id)
-  with check (auth.uid() = doctor_id);
+  using ((select auth.uid()) = doctor_id)
+  with check ((select auth.uid()) = doctor_id);
 
 -- ── drugs ────────────────────────────────────────────────────────────────
 -- A shared, read-only reference table (not per-doctor) so every clinic
@@ -129,8 +129,8 @@ drop policy if exists "Doctors manage their own prescriptions" on public.prescri
 create policy "Doctors manage their own prescriptions"
   on public.prescriptions
   for all
-  using (auth.uid() = doctor_id)
-  with check (auth.uid() = doctor_id);
+  using ((select auth.uid()) = doctor_id)
+  with check ((select auth.uid()) = doctor_id);
 
 -- ── prescription_drugs ───────────────────────────────────────────────────
 create table if not exists public.prescription_drugs (
@@ -157,8 +157,8 @@ drop policy if exists "Doctors manage their own prescription drugs" on public.pr
 create policy "Doctors manage their own prescription drugs"
   on public.prescription_drugs
   for all
-  using (auth.uid() = doctor_id)
-  with check (auth.uid() = doctor_id);
+  using ((select auth.uid()) = doctor_id)
+  with check ((select auth.uid()) = doctor_id);
 
 -- ── keep updated_at fresh ────────────────────────────────────────────────
 create or replace function public.set_updated_at()
@@ -181,6 +181,44 @@ create trigger set_updated_at before update on public.patients
 
 drop trigger if exists set_updated_at on public.prescriptions;
 create trigger set_updated_at before update on public.prescriptions
+  for each row execute function public.set_updated_at();
+
+-- ── appointments ────────────────────────────────────────────────────────
+-- Mirrors the app's Appointment entity. patient_name is denormalized on
+-- purpose (same as prescriptions) so the day list renders without a join
+-- and an old appointment still reads correctly if the patient is renamed.
+create table if not exists public.appointments (
+  id uuid primary key default gen_random_uuid(),
+  doctor_id uuid not null references public.doctors (id) on delete cascade,
+  patient_id uuid not null references public.patients (id) on delete cascade,
+  patient_name text not null,
+  scheduled_at timestamptz not null,
+  note text,
+  status text not null default 'scheduled'
+    check (status in ('scheduled', 'completed', 'cancelled')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+-- The day and week views filter by doctor and time range.
+create index if not exists appointments_doctor_id_scheduled_at_idx
+  on public.appointments (doctor_id, scheduled_at);
+-- Foreign-key index: a patient's Visits tab and the on-delete cascade.
+create index if not exists appointments_patient_id_idx
+  on public.appointments (patient_id);
+
+alter table public.appointments enable row level security;
+
+drop policy if exists "Doctors manage their own appointments" on public.appointments;
+create policy "Doctors manage their own appointments"
+  on public.appointments
+  for all
+  to authenticated
+  using ((select auth.uid()) = doctor_id)
+  with check ((select auth.uid()) = doctor_id);
+
+drop trigger if exists set_updated_at on public.appointments;
+create trigger set_updated_at before update on public.appointments
   for each row execute function public.set_updated_at();
 
 -- ── auto-create a doctors row on signup ─────────────────────────────────

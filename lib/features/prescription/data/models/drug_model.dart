@@ -9,6 +9,7 @@ class DrugModel {
   final DrugCategory category;
   final String? defaultFrequency;
   final String? defaultWhenToTake;
+  final bool isCustom;
 
   const DrugModel({
     required this.id,
@@ -18,6 +19,7 @@ class DrugModel {
     required this.category,
     this.defaultFrequency,
     this.defaultWhenToTake,
+    this.isCustom = false,
   });
 
   factory DrugModel.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ class DrugModel {
       category: DrugCategory.values.byName(json['category'] as String),
       defaultFrequency: json['defaultFrequency'] as String?,
       defaultWhenToTake: json['defaultWhenToTake'] as String?,
+      isCustom: json['isCustom'] as bool? ?? false,
     );
   }
 
@@ -41,6 +44,7 @@ class DrugModel {
       'category': category.name,
       'defaultFrequency': defaultFrequency,
       'defaultWhenToTake': defaultWhenToTake,
+      'isCustom': isCustom,
     };
   }
 
@@ -53,6 +57,20 @@ class DrugModel {
       category: category,
       defaultFrequency: defaultFrequency,
       defaultWhenToTake: defaultWhenToTake,
+      isCustom: isCustom,
+    );
+  }
+
+  factory DrugModel.fromEntity(Drug entity) {
+    return DrugModel(
+      id: entity.id,
+      name: entity.name,
+      genericName: entity.genericName,
+      commonDose: entity.commonDose,
+      category: entity.category,
+      defaultFrequency: entity.defaultFrequency,
+      defaultWhenToTake: entity.defaultWhenToTake,
+      isCustom: entity.isCustom,
     );
   }
 }

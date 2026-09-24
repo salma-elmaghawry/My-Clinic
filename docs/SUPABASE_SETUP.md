@@ -1,7 +1,8 @@
 # Supabase setup
 
-Status today: the app still runs fully on-device (SharedPreferences +
-in-memory demo data), exactly as before. This document is what to do to
+Status today: the app runs fully on-device. Patients, prescriptions,
+appointments, custom drugs and the doctor profile are all saved in
+SharedPreferences and survive restarts. This document is what to do to
 turn on the Supabase backend; nothing here happens automatically.
 
 ## 1. Create the project
@@ -17,7 +18,7 @@ turn on the Supabase backend; nothing here happens automatically.
 2. In your new project, open **SQL Editor > New query**, paste the entire
    contents of `supabase/schema.sql` from this repo, and run it. This
    creates the `doctors`, `patients`, `patient_medical_history`, `drugs`,
-   `prescriptions` and `prescription_drugs` tables with Row Level Security
+   `prescriptions`, `prescription_drugs` and `appointments` tables with Row Level Security
    already turned on, so one doctor's data is never visible to another —
    enforced by Postgres itself, not by app code.
 3. Open **Project Settings > API**. Copy:
@@ -47,12 +48,13 @@ project even exists.
 ## 3. What's NOT done yet (the next pass)
 
 Creating the project and running the schema does **not** by itself move any
-data. The four local datasources still serve local/demo data:
+data. These local datasources still serve on-device data:
 
-- `PatientsLocalDataSourceImpl` (in-memory demo patients — resets on restart)
+- `PatientsLocalDataSourceImpl`
 - `PrescriptionsLocalDataSourceImpl`
-- `DrugsLocalDataSourceImpl`
-- `DoctorProfileLocalDataSourceImpl` (real persistence via SharedPreferences)
+- `AppointmentsLocalDataSourceImpl`
+- `DrugsLocalDataSourceImpl` (built-in list plus the doctor's custom drugs)
+- `DoctorProfileLocalDataSourceImpl`
 
 The intended next step, sized as its own piece of work:
 
@@ -62,20 +64,27 @@ The intended next step, sized as its own piece of work:
    already has the matching `Failure` subclasses
    (`InvalidCredentialsFailure`, `EmailAlreadyInUseFailure`, etc.).
 2. **Write one new datasource class per feature**
-   (`PatientsSupabaseDataSource`, `PrescriptionsSupabaseDataSource`, ...)
+   (`PatientsSupabaseDataSource`, `PrescriptionsSupabaseDataSource`,
+   `AppointmentsSupabaseDataSource`, ...)
    implementing the *same* abstract datasource interface the local ones
    already implement, then swap which one `injection_container.dart`
    wires up. Nothing above the datasource layer (repositories, cubits,
    screens) needs to change — that seam is why the repository pattern is
    there.
-3. **Offline-first sync**: keep a local cache (the existing in-memory
-   layer is a natural starting point to evolve into a real local database,
-   e.g. `drift`/sqflite) as the source of truth for the UI, write through
+3. **Offline-first sync**: keep the existing on-device store (today a JSON
+   list per collection in SharedPreferences; move it to `drift`/sqflite once
+   clinics hold thousands of records) as the source of truth for the UI, write through
    to Supabase when online, and queue writes made offline to replay on
    reconnect. This preserves the app's current "works with no internet in
    the clinic" behavior while adding sync — matching the requirement that
    the app keep working when the clinic's internet is unstable.
 4. **Drug database**: seed `public.drugs` from the same list currently
-   hardcoded in `DrugsLocalDataSourceImpl`, then point
+   hardcoded in `DrugsLocalDataSourceImpl`, and add a `doctor_id`-scoped
+   table (or nullable `doctor_id` on `drugs`) for each doctor's custom
+   drugs, then point
    `DrugsSupabaseDataSource` at it — this becomes one shared, maintained
    list every doctor benefits from instead of a per-install copy.
+
+Note: local ids are generated strings, not UUIDs. The first sync must map
+them to the `uuid` primary keys in the schema (or switch `generateId()` in
+`lib/core/helpers/id_generator.dart` to UUID v4 before real data exists).

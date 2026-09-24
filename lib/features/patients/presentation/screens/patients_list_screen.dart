@@ -29,6 +29,12 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('patients.list.title'.tr())),
+      floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'patients_fab',
+        onPressed: () => context.pushNamed(Routes.patientForm),
+        icon: const Icon(Icons.person_add_alt_1),
+        label: Text('patients.list.add'.tr()),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16.w),
@@ -65,7 +71,15 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
                       );
                     }
                     if (state.patients.isEmpty) {
-                      return Center(child: Text('common.no_data'.tr()));
+                      return Center(
+                        child: Text(
+                          state.query.trim().isEmpty
+                              ? 'patients.list.empty'.tr()
+                              : 'patients.list.no_results'.tr(),
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      );
                     }
                     final tiles = state.patients
                         .map(
@@ -78,7 +92,10 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
                           ),
                         )
                         .toList();
-                    return ListView(children: tiles.animateList());
+                    return ListView(
+                      padding: EdgeInsets.only(bottom: 80.h),
+                      children: tiles.animateList(),
+                    );
                   },
                 ),
               ),

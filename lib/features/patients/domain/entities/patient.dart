@@ -34,6 +34,32 @@ class Patient extends Equatable {
     required this.createdAt,
   });
 
+  Patient copyWith({
+    String? name,
+    int? age,
+    Gender? gender,
+    String? phone,
+    String? reasonForVisit,
+    DateTime? lastVisitAt,
+    List<MedicalHistoryEntry>? medicalHistory,
+    List<TreatmentItem>? currentTreatments,
+  }) {
+    return Patient(
+      id: id,
+      name: name ?? this.name,
+      age: age ?? this.age,
+      gender: gender ?? this.gender,
+      photoUrl: photoUrl,
+      phone: phone ?? this.phone,
+      reasonForVisit: reasonForVisit ?? this.reasonForVisit,
+      lastVisitAt: lastVisitAt ?? this.lastVisitAt,
+      medicalHistory: medicalHistory ?? this.medicalHistory,
+      currentTreatments: currentTreatments ?? this.currentTreatments,
+      nextVisit: nextVisit,
+      createdAt: createdAt,
+    );
+  }
+
   @override
   List<Object?> get props => [
     id,

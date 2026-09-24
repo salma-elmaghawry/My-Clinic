@@ -11,6 +11,10 @@ class Drug extends Equatable {
   final String? defaultFrequency;
   final String? defaultWhenToTake;
 
+  /// True for drugs the doctor added themselves (deletable), false for the
+  /// built-in list.
+  final bool isCustom;
+
   const Drug({
     required this.id,
     required this.name,
@@ -19,6 +23,7 @@ class Drug extends Equatable {
     required this.category,
     this.defaultFrequency,
     this.defaultWhenToTake,
+    this.isCustom = false,
   });
 
   @override
@@ -30,5 +35,6 @@ class Drug extends Equatable {
     category,
     defaultFrequency,
     defaultWhenToTake,
+    isCustom,
   ];
 }

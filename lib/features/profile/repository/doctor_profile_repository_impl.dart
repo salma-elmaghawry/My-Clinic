@@ -29,4 +29,23 @@ class DoctorProfileRepositoryImpl implements DoctorProfileRepository {
       return Left(ErrorMapper.map(e));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> savePhoto(String sourcePath) async {
+    try {
+      return Right(await _localDataSource.savePhoto(sourcePath));
+    } catch (e) {
+      return Left(ErrorMapper.map(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> removePhoto() async {
+    try {
+      await _localDataSource.removePhoto();
+      return const Right(unit);
+    } catch (e) {
+      return Left(ErrorMapper.map(e));
+    }
+  }
 }

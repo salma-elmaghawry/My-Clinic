@@ -45,7 +45,9 @@ class PatientModel {
       reasonForVisit: json['reasonForVisit'] as String?,
       lastVisitAt: DateTime.parse(json['lastVisitAt'] as String),
       medicalHistory: (json['medicalHistory'] as List<dynamic>? ?? [])
-          .map((e) => MedicalHistoryEntryModel.fromJson(e as Map<String, dynamic>))
+          .map(
+            (e) => MedicalHistoryEntryModel.fromJson(e as Map<String, dynamic>),
+          )
           .toList(),
       currentTreatments: (json['currentTreatments'] as List<dynamic>? ?? [])
           .map((e) => TreatmentItemModel.fromJson(e as Map<String, dynamic>))
@@ -54,6 +56,41 @@ class PatientModel {
           ? NextVisitModel.fromJson(json['nextVisit'] as Map<String, dynamic>)
           : null,
       createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+  }
+
+  factory PatientModel.fromEntity(Patient entity) {
+    return PatientModel(
+      id: entity.id,
+      name: entity.name,
+      age: entity.age,
+      gender: entity.gender,
+      photoUrl: entity.photoUrl,
+      phone: entity.phone,
+      reasonForVisit: entity.reasonForVisit,
+      lastVisitAt: entity.lastVisitAt,
+      medicalHistory: entity.medicalHistory
+          .map(
+            (e) =>
+                MedicalHistoryEntryModel(condition: e.condition, date: e.date),
+          )
+          .toList(),
+      currentTreatments: entity.currentTreatments
+          .map(
+            (e) => TreatmentItemModel(
+              drugName: e.drugName,
+              frequency: e.frequency,
+              notes: e.notes,
+            ),
+          )
+          .toList(),
+      nextVisit: entity.nextVisit == null
+          ? null
+          : NextVisitModel(
+              dateTime: entity.nextVisit!.dateTime,
+              reminderSet: entity.nextVisit!.reminderSet,
+            ),
+      createdAt: entity.createdAt,
     );
   }
 

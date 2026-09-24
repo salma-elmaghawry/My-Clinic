@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_clinic/core/helpers/extensions.dart';
 import 'package:my_clinic/core/injection/injection_container.dart';
 import 'package:my_clinic/core/routes/routes.dart';
+import 'package:my_clinic/features/appointments/presentation/cubit/appointments_cubit.dart';
 import 'package:my_clinic/features/appointments/presentation/screens/appointments_screen.dart';
 import 'package:my_clinic/features/home/presentation/cubit/home_cubit.dart';
 import 'package:my_clinic/features/home/presentation/screens/home_screen.dart';
@@ -28,6 +29,10 @@ class _MainShellScreenState extends State<MainShellScreen> {
     setState(() => _currentIndex = 1);
   }
 
+  void _goToAppointmentsTab() {
+    setState(() => _currentIndex = 3);
+  }
+
   void _onTap(int index) {
     if (index == 2) {
       context.pushNamed(Routes.newPrescription);
@@ -41,14 +46,20 @@ class _MainShellScreenState extends State<MainShellScreen> {
     final tabs = [
       BlocProvider(
         create: (_) => getIt<HomeCubit>(),
-        child: HomeScreen(onNavigateToPatients: _goToPatientsTab),
+        child: HomeScreen(
+          onNavigateToPatients: _goToPatientsTab,
+          onNavigateToAppointments: _goToAppointmentsTab,
+        ),
       ),
       BlocProvider(
         create: (_) => getIt<PatientsCubit>(),
         child: const PatientsListScreen(),
       ),
       const SizedBox.shrink(), // Prescription tab pushes a route instead.
-      const AppointmentsScreen(),
+      BlocProvider(
+        create: (_) => getIt<AppointmentsCubit>(),
+        child: const AppointmentsScreen(),
+      ),
       const SettingsScreen(),
     ];
 

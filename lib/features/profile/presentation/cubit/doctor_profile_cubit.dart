@@ -46,4 +46,42 @@ class DoctorProfileCubit extends Cubit<DoctorProfileState> {
       },
     );
   }
+
+  /// Saves the photo right away (like most avatar pickers) instead of
+  /// waiting for the form's Save button.
+  Future<bool> updatePhoto(String sourcePath) async {
+    emit(state.copyWith(status: Status.loading));
+    final result = await _repository.savePhoto(sourcePath);
+    return result.fold(
+      (failure) {
+        emit(state.copyWith(status: Status.failure, message: failure.message, failure: failure));
+        return false;
+      },
+      (storedPath) {
+        emit(state.copyWith(
+          status: Status.success,
+          profile: state.profile.copyWith(photoPath: storedPath),
+        ));
+        return true;
+      },
+    );
+  }
+
+  Future<bool> removePhoto() async {
+    emit(state.copyWith(status: Status.loading));
+    final result = await _repository.removePhoto();
+    return result.fold(
+      (failure) {
+        emit(state.copyWith(status: Status.failure, message: failure.message, failure: failure));
+        return false;
+      },
+      (_) {
+        emit(state.copyWith(
+          status: Status.success,
+          profile: state.profile.copyWith(clearPhoto: true),
+        ));
+        return true;
+      },
+    );
+  }
 }

@@ -29,6 +29,23 @@ class Prescription extends Equatable {
     required this.status,
   });
 
+  Prescription copyWith({PrescriptionStatus? status}) {
+    return Prescription(
+      id: id,
+      patientId: patientId,
+      patientName: patientName,
+      patientAge: patientAge,
+      patientGender: patientGender,
+      date: date,
+      diagnosis: diagnosis,
+      drugs: drugs,
+      notes: notes,
+      status: status ?? this.status,
+    );
+  }
+
+  bool get isDraft => status == PrescriptionStatus.draft;
+
   @override
   List<Object?> get props => [
     id,

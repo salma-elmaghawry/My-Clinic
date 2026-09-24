@@ -10,15 +10,13 @@
         "done": "Done",
         "loading": "Loading...",
         "no_data": "No data available",
-        "coming_soon": {
-            "title": "Coming soon",
-            "description": "This feature is on the way in a future update."
-        },
         "not_found": {
             "title": "Page not found",
             "description": "That screen doesn't exist or moved.",
             "go_home": "Go to home"
-        }
+        },
+        "delete": "Delete",
+        "edit": "Edit"
     },
     "preferences": {
         "language": "Language",
@@ -76,7 +74,7 @@
             "patient_records": "Patient Records",
             "appointments": "Appointments",
             "drug_database": "Drug Database",
-            "notes_stats": "Notes & Stats"
+            "notes_stats": "Clinic Stats"
         },
         "recent_patients": {
             "title": "Recent patients"
@@ -102,26 +100,65 @@
         },
         "list": {
             "title": "Patients",
-            "search_hint": "Search patients by name"
+            "search_hint": "Search patients by name",
+            "add": "Add patient",
+            "empty": "No patients yet.\nTap \"Add patient\" to create your first patient file.",
+            "no_results": "No patients match your search"
         },
         "detail": {
             "tabs": {
                 "medical_history": "Medical History",
                 "current_treatment": "Current Treatment",
-                "next_visit": "Next Visit"
+                "visits": "Visits",
+                "prescriptions": "Prescriptions"
             },
             "medical_history": {
-                "title": "Medical History"
+                "title": "Medical History",
+                "add": "Add condition",
+                "condition_label": "Condition",
+                "date_label": "Diagnosed on"
             },
             "current_treatment": {
                 "title": "Current Treatment"
             },
-            "next_visit": {
-                "title": "Next Visit",
-                "reminder_set": "Reminder set"
+            "new_prescription_button": "New Prescription",
+            "title": "Patient File",
+            "visits": {
+                "schedule": "Schedule a visit",
+                "next": "Next visit",
+                "none_upcoming": "No upcoming visit scheduled",
+                "all": "All visits"
             },
-            "new_prescription_button": "New Prescription"
-        }
+            "prescriptions": {
+                "empty": "No prescriptions yet",
+                "drug_count": "{count} drug(s)"
+            }
+        },
+        "picker": {
+            "title": "Choose a patient",
+            "empty": "No patients found. Add the patient from the Patients tab first."
+        },
+        "form": {
+            "new_title": "New Patient",
+            "edit_title": "Edit Patient",
+            "name_label": "Full name",
+            "name_required": "Please enter the patient's name",
+            "age_label": "Age",
+            "age_invalid": "Enter a valid age",
+            "phone_label": "Phone (optional)",
+            "reason_label": "Reason for visit (optional)",
+            "reason_hint": "e.g. Follow-up, chest pain, routine check",
+            "saved": "Patient saved"
+        },
+        "actions": {
+            "edit": "Edit patient",
+            "delete": "Delete patient"
+        },
+        "delete_confirm": {
+            "title": "Delete patient?",
+            "message": "This permanently deletes {name}'s file, prescriptions and appointments from this device."
+        },
+        "deleted_snackbar": "Patient deleted"
     },
     "prescription": {
         "new": {
@@ -142,19 +179,26 @@
                 "missing_patient": "Please select a patient first",
                 "missing_drugs": "Please add at least one drug",
                 "missing_diagnosis": "Please enter a diagnosis"
-            }
+            },
+            "add_custom_drug": "Add \"{name}\" as a new drug"
         },
         "preview": {
             "title": "Prescription Preview",
             "diagnosis_label": "Diagnosis",
             "notes_label": "Notes",
-            "qr_caption": "Scan to view",
-            "share_coming_soon": "Sharing is coming soon"
+            "qr_caption": "Scan for drug list",
+            "share": "Share prescription",
+            "share_subject": "Prescription for {name}",
+            "share_failed": "Couldn't share the prescription. Please try again."
+        },
+        "status": {
+            "draft": "Draft",
+            "generated": "Issued"
         }
     },
     "profile": {
         "title": "Doctor & Clinic Profile",
-        "settings_subtitle": "Your name, specialty and clinic name",
+        "settings_subtitle": "Your photo, name, specialty and clinic name",
         "subtitle": "This is what your patients and prescriptions will show. Works for any specialty.",
         "doctor_name_label": "Doctor name",
         "doctor_name_hint": "e.g. Dr. Sara Youssef",
@@ -167,7 +211,12 @@
         "saved_snackbar": "Profile updated",
         "default_name": "Your Name",
         "default_specialty": "Your Specialty",
-        "default_clinic": "Your Clinic"
+        "default_clinic": "Your Clinic",
+        "photo_change": "Change photo",
+        "photo_camera": "Take a photo",
+        "photo_gallery": "Choose from gallery",
+        "photo_remove": "Remove photo",
+        "photo_error": "Couldn't open the camera or gallery. Check the app's permissions."
     },
     "notifications": {
         "permission_denied": "Notifications are turned off in your phone's settings for this app",
@@ -178,5 +227,80 @@
             "settings_label": "Daily patient log reminder",
             "settings_subtitle": "Every day at {time}"
         }
+    },
+    "appointments": {
+        "add": "New appointment",
+        "today": "Today",
+        "pick_date": "Pick a date",
+        "empty_day": "No appointments on this day",
+        "status": {
+            "scheduled": "Scheduled",
+            "completed": "Done",
+            "cancelled": "Cancelled"
+        },
+        "actions": {
+            "complete": "Mark as done",
+            "cancel": "Cancel appointment",
+            "reschedule": "Restore as scheduled",
+            "edit": "Edit",
+            "delete": "Delete"
+        },
+        "delete_confirm": {
+            "title": "Delete appointment?",
+            "message": "This appointment will be removed permanently."
+        },
+        "form": {
+            "new_title": "New Appointment",
+            "edit_title": "Edit Appointment",
+            "patient_label": "Patient",
+            "choose_patient": "Choose a patient",
+            "date_label": "Date",
+            "time_label": "Time",
+            "note_label": "Note (optional)",
+            "note_hint": "e.g. Follow-up, lab results review",
+            "saved": "Appointment saved",
+            "errors": {
+                "missing_patient": "Please choose a patient"
+            }
+        }
+    },
+    "drugs": {
+        "add": "Add drug",
+        "add_title": "Add your own drug",
+        "all": "All",
+        "form": {
+            "name": "Brand name",
+            "name_required": "Please enter the drug name",
+            "generic": "Generic name (optional)",
+            "dose": "Usual dose (optional)",
+            "category": "Category",
+            "frequency": "Usual frequency (optional)",
+            "when_to_take": "When to take (optional)"
+        },
+        "categories": {
+            "anticoagulant": "Anticoagulant",
+            "antiplatelet": "Antiplatelet",
+            "venotonic": "Vascular / venotonic",
+            "woundCare": "Wound care",
+            "compressionTherapy": "Compression therapy",
+            "analgesic": "Analgesic",
+            "antibiotic": "Antibiotic",
+            "other": "Other"
+        },
+        "delete_confirm": {
+            "title": "Delete drug?",
+            "message": "{name} will be removed from your drug list. Existing prescriptions are not affected."
+        }
+    },
+    "stats": {
+        "total_patients": "Total patients",
+        "new_patients_month": "New patients this month",
+        "prescriptions_month": "Prescriptions this month",
+        "visits_month": "Visits done this month",
+        "upcoming_appointments": "Upcoming appointments",
+        "gender_split": "Patients by gender",
+        "top_drugs": "Most prescribed drugs",
+        "top_drugs_subtitle": "Across all issued prescriptions",
+        "no_prescriptions": "Issue a prescription to see your most prescribed drugs here."
     }
 }

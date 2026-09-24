@@ -10,4 +10,8 @@ abstract class PatientsRepository {
   Future<Either<Failure, Patient>> getPatientById(String id);
 
   Future<Either<Failure, List<Patient>>> getRecentPatients({int limit = 5});
+
+  Future<Either<Failure, Patient>> savePatient(Patient patient);
+
+  Future<Either<Failure, Unit>> deletePatient(String id);
 }

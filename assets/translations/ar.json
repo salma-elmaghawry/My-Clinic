@@ -10,15 +10,13 @@
         "done": "تم",
         "loading": "جارٍ التحميل...",
         "no_data": "لا توجد بيانات",
-        "coming_soon": {
-            "title": "قريباً",
-            "description": "هذه الميزة قادمة في تحديث لاحق."
-        },
         "not_found": {
             "title": "الصفحة غير موجودة",
             "description": "الشاشة دي مش موجودة أو اتغيرت.",
             "go_home": "العودة للرئيسية"
-        }
+        },
+        "delete": "حذف",
+        "edit": "تعديل"
     },
     "preferences": {
         "language": "اللغة",
@@ -76,7 +74,7 @@
             "patient_records": "سجلات المرضى",
             "appointments": "المواعيد",
             "drug_database": "قاعدة بيانات الأدوية",
-            "notes_stats": "الملاحظات والإحصائيات"
+            "notes_stats": "إحصائيات العيادة"
         },
         "recent_patients": {
             "title": "أحدث المرضى"
@@ -102,26 +100,65 @@
         },
         "list": {
             "title": "المرضى",
-            "search_hint": "ابحث عن مريض بالاسم"
+            "search_hint": "ابحث عن مريض بالاسم",
+            "add": "إضافة مريض",
+            "empty": "لا يوجد مرضى بعد.\nاضغط \"إضافة مريض\" لإنشاء أول ملف.",
+            "no_results": "لا يوجد مرضى مطابقون للبحث"
         },
         "detail": {
             "tabs": {
                 "medical_history": "التاريخ المرضي",
                 "current_treatment": "العلاج الحالي",
-                "next_visit": "الزيارة القادمة"
+                "visits": "الزيارات",
+                "prescriptions": "الروشتات"
             },
             "medical_history": {
-                "title": "التاريخ المرضي"
+                "title": "التاريخ المرضي",
+                "add": "إضافة حالة مرضية",
+                "condition_label": "الحالة",
+                "date_label": "تاريخ التشخيص"
             },
             "current_treatment": {
                 "title": "العلاج الحالي"
             },
-            "next_visit": {
-                "title": "الزيارة القادمة",
-                "reminder_set": "تم ضبط التذكير"
+            "new_prescription_button": "روشتة جديدة",
+            "title": "ملف المريض",
+            "visits": {
+                "schedule": "حجز زيارة",
+                "next": "الزيارة القادمة",
+                "none_upcoming": "لا توجد زيارة قادمة",
+                "all": "كل الزيارات"
             },
-            "new_prescription_button": "روشتة جديدة"
-        }
+            "prescriptions": {
+                "empty": "لا توجد روشتات بعد",
+                "drug_count": "{count} دواء"
+            }
+        },
+        "picker": {
+            "title": "اختر المريض",
+            "empty": "لا يوجد مرضى. أضف المريض من تبويب المرضى أولاً."
+        },
+        "form": {
+            "new_title": "مريض جديد",
+            "edit_title": "تعديل بيانات المريض",
+            "name_label": "الاسم بالكامل",
+            "name_required": "من فضلك أدخل اسم المريض",
+            "age_label": "السن",
+            "age_invalid": "أدخل سناً صحيحاً",
+            "phone_label": "رقم الهاتف (اختياري)",
+            "reason_label": "سبب الزيارة (اختياري)",
+            "reason_hint": "مثال: متابعة، ألم في الصدر، كشف دوري",
+            "saved": "تم حفظ المريض"
+        },
+        "actions": {
+            "edit": "تعديل المريض",
+            "delete": "حذف المريض"
+        },
+        "delete_confirm": {
+            "title": "حذف المريض؟",
+            "message": "سيتم حذف ملف {name} وكل الروشتات والمواعيد الخاصة به من هذا الجهاز نهائياً."
+        },
+        "deleted_snackbar": "تم حذف المريض"
     },
     "prescription": {
         "new": {
@@ -142,19 +179,26 @@
                 "missing_patient": "يرجى اختيار مريض أولاً",
                 "missing_drugs": "يرجى إضافة دواء واحد على الأقل",
                 "missing_diagnosis": "يرجى إدخال التشخيص"
-            }
+            },
+            "add_custom_drug": "إضافة \"{name}\" كدواء جديد"
         },
         "preview": {
             "title": "معاينة الروشتة",
             "diagnosis_label": "التشخيص",
             "notes_label": "ملاحظات",
-            "qr_caption": "امسح للعرض",
-            "share_coming_soon": "المشاركة قريباً"
+            "qr_caption": "امسح لقائمة الأدوية",
+            "share": "مشاركة الروشتة",
+            "share_subject": "روشتة {name}",
+            "share_failed": "تعذرت مشاركة الروشتة. حاول مرة أخرى."
+        },
+        "status": {
+            "draft": "مسودة",
+            "generated": "صادرة"
         }
     },
     "profile": {
         "title": "بيانات الطبيب والعيادة",
-        "settings_subtitle": "اسمك وتخصصك واسم عيادتك",
+        "settings_subtitle": "صورتك واسمك وتخصصك واسم العيادة",
         "subtitle": "دي البيانات اللي هتظهر لمرضاك وفي الروشتة. تشتغل مع أي تخصص.",
         "doctor_name_label": "اسم الدكتور",
         "doctor_name_hint": "مثال: د. سارة يوسف",
@@ -167,7 +211,12 @@
         "saved_snackbar": "تم تحديث البيانات",
         "default_name": "اسمك",
         "default_specialty": "تخصصك",
-        "default_clinic": "اسم عيادتك"
+        "default_clinic": "اسم عيادتك",
+        "photo_change": "تغيير الصورة",
+        "photo_camera": "التقاط صورة",
+        "photo_gallery": "اختيار من المعرض",
+        "photo_remove": "حذف الصورة",
+        "photo_error": "تعذّر فتح الكاميرا أو المعرض. تأكد من أذونات التطبيق."
     },
     "notifications": {
         "permission_denied": "الإشعارات متوقفة للتطبيق ده من إعدادات الموبايل",
@@ -178,5 +227,80 @@
             "settings_label": "تذكير يومي بتسجيل المرضى",
             "settings_subtitle": "كل يوم الساعة {time}"
         }
+    },
+    "appointments": {
+        "add": "موعد جديد",
+        "today": "اليوم",
+        "pick_date": "اختر تاريخاً",
+        "empty_day": "لا توجد مواعيد في هذا اليوم",
+        "status": {
+            "scheduled": "محجوز",
+            "completed": "تم",
+            "cancelled": "ملغي"
+        },
+        "actions": {
+            "complete": "تم الكشف",
+            "cancel": "إلغاء الموعد",
+            "reschedule": "إرجاع كمحجوز",
+            "edit": "تعديل",
+            "delete": "حذف"
+        },
+        "delete_confirm": {
+            "title": "حذف الموعد؟",
+            "message": "سيتم حذف هذا الموعد نهائياً."
+        },
+        "form": {
+            "new_title": "موعد جديد",
+            "edit_title": "تعديل الموعد",
+            "patient_label": "المريض",
+            "choose_patient": "اختر المريض",
+            "date_label": "التاريخ",
+            "time_label": "الوقت",
+            "note_label": "ملاحظة (اختياري)",
+            "note_hint": "مثال: متابعة، مراجعة تحاليل",
+            "saved": "تم حفظ الموعد",
+            "errors": {
+                "missing_patient": "من فضلك اختر المريض"
+            }
+        }
+    },
+    "drugs": {
+        "add": "إضافة دواء",
+        "add_title": "أضف دواءك الخاص",
+        "all": "الكل",
+        "form": {
+            "name": "الاسم التجاري",
+            "name_required": "من فضلك أدخل اسم الدواء",
+            "generic": "الاسم العلمي (اختياري)",
+            "dose": "الجرعة المعتادة (اختياري)",
+            "category": "التصنيف",
+            "frequency": "عدد المرات المعتاد (اختياري)",
+            "when_to_take": "موعد تناوله (اختياري)"
+        },
+        "categories": {
+            "anticoagulant": "مضاد للتجلط",
+            "antiplatelet": "مضاد للصفائح",
+            "venotonic": "أوعية دموية / مقوي للأوردة",
+            "woundCare": "العناية بالجروح",
+            "compressionTherapy": "علاج بالضغط",
+            "analgesic": "مسكن",
+            "antibiotic": "مضاد حيوي",
+            "other": "أخرى"
+        },
+        "delete_confirm": {
+            "title": "حذف الدواء؟",
+            "message": "سيتم حذف {name} من قائمة أدويتك. الروشتات السابقة لن تتأثر."
+        }
+    },
+    "stats": {
+        "total_patients": "إجمالي المرضى",
+        "new_patients_month": "مرضى جدد هذا الشهر",
+        "prescriptions_month": "روشتات هذا الشهر",
+        "visits_month": "زيارات تمت هذا الشهر",
+        "upcoming_appointments": "مواعيد قادمة",
+        "gender_split": "المرضى حسب النوع",
+        "top_drugs": "الأدوية الأكثر وصفاً",
+        "top_drugs_subtitle": "من كل الروشتات الصادرة",
+        "no_prescriptions": "أصدر روشتة لتظهر هنا الأدوية الأكثر وصفاً."
     }
 }

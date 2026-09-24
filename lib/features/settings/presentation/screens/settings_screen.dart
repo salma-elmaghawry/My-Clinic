@@ -7,7 +7,6 @@ import 'package:my_clinic/core/animations/animations.dart';
 import 'package:my_clinic/core/helpers/spacing.dart';
 import 'package:my_clinic/core/injection/injection_container.dart';
 import 'package:my_clinic/core/routes/routes.dart';
-import 'package:my_clinic/core/widgets/coming_soon_view.dart';
 import 'package:my_clinic/features/settings/presentation/cubit/daily_reminder_cubit.dart';
 import 'package:my_clinic/features/settings/presentation/widgets/daily_reminder_switcher.dart';
 import 'package:my_clinic/features/settings/presentation/widgets/language_switcher.dart';
@@ -72,12 +71,6 @@ class SettingsScreen extends StatelessWidget {
                     child: const DailyReminderSwitcher(),
                   ).fadeInSlideUp(delay: 100.ms),
                 ],
-              ),
-            ),
-            const Expanded(
-              child: ComingSoonView(
-                titleKey: 'common.coming_soon.title',
-                icon: Icons.settings_outlined,
               ),
             ),
           ],

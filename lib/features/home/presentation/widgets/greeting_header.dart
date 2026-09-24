@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_clinic/core/helpers/spacing.dart';
 import 'package:my_clinic/core/routes/routes.dart';
 import 'package:my_clinic/features/profile/presentation/cubit/doctor_profile_cubit.dart';
+import 'package:my_clinic/features/profile/presentation/widgets/doctor_avatar.dart';
 
 class GreetingHeader extends StatelessWidget {
   const GreetingHeader({super.key});
@@ -19,14 +20,9 @@ class GreetingHeader extends StatelessWidget {
       onTap: () => Navigator.of(context).pushNamed(Routes.editProfile),
       child: Row(
         children: [
-          ClipRRect(
+          DoctorAvatar(
+            size: 52.w,
             borderRadius: BorderRadius.circular(14.r),
-            child: Image.asset(
-              profileState.profile.logoAssetPath,
-              width: 52.w,
-              height: 52.w,
-              fit: BoxFit.cover,
-            ),
           ),
           horizontalSpace(12),
           Expanded(

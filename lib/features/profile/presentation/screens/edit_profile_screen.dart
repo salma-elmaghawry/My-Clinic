@@ -6,8 +6,9 @@ import 'package:my_clinic/core/helpers/app_validators.dart';
 import 'package:my_clinic/core/helpers/spacing.dart';
 import 'package:my_clinic/features/profile/presentation/cubit/doctor_profile_cubit.dart';
 import 'package:my_clinic/features/profile/presentation/cubit/doctor_profile_state.dart';
+import 'package:my_clinic/features/profile/presentation/widgets/profile_photo_picker.dart';
 
-/// Lets any doctor set their own name, specialty and clinic name, replacing
+/// Lets any doctor set their own photo, name, specialty and clinic name, replacing
 /// what used to be a single hardcoded profile. Specialty is a plain text
 /// field on purpose — the app makes no assumption about which medical
 /// specialty is using it.
@@ -75,6 +76,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               child: ListView(
                 padding: EdgeInsets.all(16.w),
                 children: [
+                  const ProfilePhotoPicker(),
+                  verticalSpace(12),
                   Text(
                     'profile.subtitle'.tr(),
                     style: Theme.of(context).textTheme.bodyMedium,

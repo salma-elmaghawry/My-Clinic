@@ -13,6 +13,9 @@ class MainBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // `.tr()` alone doesn't subscribe this widget to locale changes, so read
+    // the locale here to rebuild the labels as soon as the language switches.
+    context.locale;
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,

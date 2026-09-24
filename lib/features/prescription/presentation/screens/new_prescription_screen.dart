@@ -30,23 +30,28 @@ class NewPrescriptionScreen extends StatelessWidget {
     return BlocConsumer<NewPrescriptionCubit, NewPrescriptionState>(
       listenWhen: (previous, current) =>
           previous.generatedPrescription != current.generatedPrescription ||
-          (current.isFailure && previous.message != current.message),
+          (current.isFailure && previous.message != current.message) ||
+          (current.isSuccess &&
+              current.action == NewPrescriptionAction.saveDraft &&
+              previous.status != current.status),
       listener: (context, state) {
         if (state.generatedPrescription != null) {
-          context.pushNamed(
+          // Replace the editor so "back" from the preview returns to where
+          // the doctor started, not to a finished form.
+          context.pushReplacementNamed(
             Routes.prescriptionPreview,
             arguments: state.generatedPrescription,
           );
         } else if (state.isFailure && state.message != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message!)));
         } else if (state.isSuccess &&
             state.action == NewPrescriptionAction.saveDraft &&
             state.message != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message!)));
         }
       },
       builder: (context, state) {
@@ -75,18 +80,28 @@ class NewPrescriptionScreen extends StatelessWidget {
                       results: state.drugResults,
                       onChanged: cubit.searchDrugs,
                       onSelect: cubit.addDrug,
+                      onAddCustom: cubit.addCustomDrug,
                     ),
                   ),
                   verticalSpace(16),
                   ...state.selectedDrugs.asMap().entries.map((entry) {
                     final index = entry.key;
                     final drug = entry.value;
+                    // Stable per-drug key: the fields below only read their
+                    // initial value, so without it removing an earlier drug
+                    // would shift typed text onto the wrong drug.
+                    final occurrence = state.selectedDrugs
+                        .take(index)
+                        .where((d) => d.drugId == drug.drugId)
+                        .length;
                     return Container(
+                      key: ValueKey('${drug.drugId}#$occurrence'),
                       margin: EdgeInsets.only(bottom: 12.h),
                       padding: EdgeInsets.all(12.w),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.onSurface
-                            .withValues(alpha: 0.03),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.03),
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Column(
@@ -121,8 +136,7 @@ class NewPrescriptionScreen extends StatelessWidget {
                           verticalSpace(8),
                           DrugNotesField(
                             notes: drug.notes,
-                            onChanged: (v) =>
-                                cubit.updateDrug(index, notes: v),
+                            onChanged: (v) => cubit.updateDrug(index, notes: v),
                           ),
                         ],
                       ),
@@ -145,9 +159,11 @@ class NewPrescriptionScreen extends StatelessWidget {
                   ],
                   verticalSpace(28),
                   PrescriptionActionButtons(
-                    isSavingDraft: state.isLoading &&
+                    isSavingDraft:
+                        state.isLoading &&
                         state.action == NewPrescriptionAction.saveDraft,
-                    isGenerating: state.isLoading &&
+                    isGenerating:
+                        state.isLoading &&
                         state.action == NewPrescriptionAction.generate,
                     onSaveDraft: cubit.saveDraft,
                     onGenerate: cubit.generate,
@@ -181,7 +197,9 @@ class _PatientPicker extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'prescription.new.select_patient_hint'.tr(),
             prefixIcon: const Icon(Icons.person_search),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12.r),
+            ),
           ),
         ),
         if (state.patientResults.isNotEmpty)

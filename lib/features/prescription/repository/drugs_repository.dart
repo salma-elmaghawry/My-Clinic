@@ -6,4 +6,8 @@ abstract class DrugsRepository {
   Future<Either<Failure, List<Drug>>> getDrugs();
 
   Future<Either<Failure, List<Drug>>> searchDrugs(String query);
+
+  Future<Either<Failure, Drug>> addCustomDrug(Drug drug);
+
+  Future<Either<Failure, Unit>> deleteCustomDrug(String id);
 }

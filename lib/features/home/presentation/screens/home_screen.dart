@@ -18,8 +18,13 @@ import 'package:my_clinic/features/home/presentation/widgets/stat_card.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback onNavigateToPatients;
+  final VoidCallback onNavigateToAppointments;
 
-  const HomeScreen({super.key, required this.onNavigateToPatients});
+  const HomeScreen({
+    super.key,
+    required this.onNavigateToPatients,
+    required this.onNavigateToAppointments,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -104,7 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     textAlign: TextAlign.start,
                   ),
                   verticalSpace(12),
-                  QuickNavGrid(onPatientRecordsTap: widget.onNavigateToPatients),
+                  QuickNavGrid(
+                    onPatientRecordsTap: widget.onNavigateToPatients,
+                    onAppointmentsTap: widget.onNavigateToAppointments,
+                  ),
                   verticalSpace(24),
                   Text(
                     'home.recent_patients.title'.tr(),

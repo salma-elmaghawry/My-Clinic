@@ -7,21 +7,25 @@ import 'package:my_clinic/features/patients/domain/entities/medical_history_entr
 
 class MedicalHistoryList extends StatelessWidget {
   final List<MedicalHistoryEntry> entries;
+  final VoidCallback onAdd;
+  final ValueChanged<MedicalHistoryEntry> onRemove;
 
-  const MedicalHistoryList({super.key, required this.entries});
+  const MedicalHistoryList({
+    super.key,
+    required this.entries,
+    required this.onAdd,
+    required this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    if (entries.isEmpty) {
-      return Center(child: Text('common.no_data'.tr()));
-    }
     final dateFormat = DateFormat.yMMMd(context.locale.toString());
     final tiles = entries
         .map(
           (entry) => Container(
             margin: EdgeInsets.only(bottom: 10.h),
-            padding: EdgeInsets.all(12.w),
+            padding: EdgeInsets.fromLTRB(12.w, 4.h, 4.w, 4.h),
             decoration: BoxDecoration(
               color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(12.r),
@@ -29,8 +33,10 @@ class MedicalHistoryList extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.medical_information_outlined,
-                    color: theme.colorScheme.secondary),
+                Icon(
+                  Icons.medical_information_outlined,
+                  color: theme.colorScheme.secondary,
+                ),
                 horizontalSpace(10),
                 Expanded(
                   child: Column(
@@ -49,6 +55,11 @@ class MedicalHistoryList extends StatelessWidget {
                     ],
                   ),
                 ),
+                IconButton(
+                  tooltip: 'common.delete'.tr(),
+                  icon: const Icon(Icons.delete_outline),
+                  onPressed: () => onRemove(entry),
+                ),
               ],
             ),
           ),
@@ -56,7 +67,21 @@ class MedicalHistoryList extends StatelessWidget {
         .toList();
     return ListView(
       padding: EdgeInsets.all(16.w),
-      children: tiles.animateList(),
+      children: [
+        OutlinedButton.icon(
+          onPressed: onAdd,
+          icon: const Icon(Icons.add),
+          label: Text('patients.detail.medical_history.add'.tr()),
+        ),
+        verticalSpace(12),
+        if (entries.isEmpty)
+          Padding(
+            padding: EdgeInsets.only(top: 24.h),
+            child: Center(child: Text('common.no_data'.tr())),
+          )
+        else
+          ...tiles.animateList(),
+      ],
     );
   }
 }

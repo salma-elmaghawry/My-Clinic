@@ -1,25 +1,50 @@
+import 'package:my_clinic/core/storage/json_list_store.dart';
 import 'package:my_clinic/features/prescription/data/models/drug_model.dart';
 import 'package:my_clinic/features/prescription/domain/entities/drug_category.dart';
 
 import 'drugs_local_datasource.dart';
 
+/// Built-in starter drug list plus the doctor's own custom drugs, which are
+/// stored on the device. Custom drugs let any specialty use the app, since
+/// the built-in list only covers common vascular and general drugs.
 class DrugsLocalDataSourceImpl implements DrugsLocalDataSource {
-  static final List<DrugModel> _drugs = _seedDrugs();
+  static const String customDrugsStorageKey = 'custom_drugs_v1';
+  static final List<DrugModel> _builtInDrugs = _seedDrugs();
+
+  final JsonListStore _customStore;
+
+  DrugsLocalDataSourceImpl(this._customStore);
+
+  List<DrugModel> _all() {
+    final custom = _customStore.readAll().map(DrugModel.fromJson).toList();
+    return [...custom, ..._builtInDrugs];
+  }
 
   @override
-  Future<List<DrugModel>> getDrugs() async {
-    return List.unmodifiable(_drugs);
-  }
+  Future<List<DrugModel>> getDrugs() async => _all();
 
   @override
   Future<List<DrugModel>> searchDrugs(String query) async {
     final normalized = query.trim().toLowerCase();
-    if (normalized.isEmpty) return List.unmodifiable(_drugs);
-    return _drugs
-        .where((d) =>
-            d.name.toLowerCase().contains(normalized) ||
-            d.genericName.toLowerCase().contains(normalized))
+    if (normalized.isEmpty) return _all();
+    return _all()
+        .where(
+          (d) =>
+              d.name.toLowerCase().contains(normalized) ||
+              d.genericName.toLowerCase().contains(normalized),
+        )
         .toList();
+  }
+
+  @override
+  Future<DrugModel> addCustomDrug(DrugModel drug) async {
+    await _customStore.upsert(drug.toJson());
+    return drug;
+  }
+
+  @override
+  Future<void> deleteCustomDrug(String id) async {
+    await _customStore.removeWhere((item) => item['id'] == id);
   }
 
   static List<DrugModel> _seedDrugs() {

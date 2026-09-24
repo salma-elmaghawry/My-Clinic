@@ -4,4 +4,8 @@ abstract class DrugsLocalDataSource {
   Future<List<DrugModel>> getDrugs();
 
   Future<List<DrugModel>> searchDrugs(String query);
+
+  Future<DrugModel> addCustomDrug(DrugModel drug);
+
+  Future<void> deleteCustomDrug(String id);
 }
