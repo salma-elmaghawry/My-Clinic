@@ -1,3 +1,4 @@
+import 'package:my_clinic/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_clinic/core/animations/animations.dart';
@@ -20,6 +21,7 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final accent = AppColors.accentFor(color, theme.brightness);
     return Container(
       padding: EdgeInsets.all(14.w),
       decoration: BoxDecoration(
@@ -39,16 +41,13 @@ class StatCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8.w),
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
+              color: accent.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(10.r),
             ),
-            child: Icon(icon, color: color, size: 20.sp),
+            child: Icon(icon, color: accent, size: 20.sp),
           ),
           verticalSpace(10),
-          AnimatedCounter(
-            value: value,
-            style: theme.textTheme.displaySmall,
-          ),
+          AnimatedCounter(value: value, style: theme.textTheme.displaySmall),
           verticalSpace(2),
           Text(
             label,

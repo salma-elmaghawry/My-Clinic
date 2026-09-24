@@ -27,10 +27,8 @@ class RecentPatientsList extends StatelessWidget {
           final patient = patients[index];
           return RecentPatientTile(
             patient: patient,
-            onTap: () => context.pushNamed(
-              Routes.patientDetail,
-              arguments: patient.id,
-            ),
+            onTap: () =>
+                context.pushNamed(Routes.patientDetail, arguments: patient.id),
           );
         },
       ),

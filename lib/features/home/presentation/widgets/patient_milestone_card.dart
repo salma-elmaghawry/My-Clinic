@@ -83,7 +83,9 @@ class PatientMilestoneCard extends StatelessWidget {
                   progress.nextTierThreshold == null
                       ? 'home.milestone.top_tier'.tr()
                       : 'home.milestone.remaining'.tr(
-                          namedArgs: {'count': '${progress.remainingToNextTier}'},
+                          namedArgs: {
+                            'count': '${progress.remainingToNextTier}',
+                          },
                         ),
                   style: theme.textTheme.bodySmall,
                 ),
@@ -98,15 +100,35 @@ class PatientMilestoneCard extends StatelessWidget {
   _TierInfo _tierInfo(PatientMilestoneTier tier) {
     switch (tier) {
       case PatientMilestoneTier.starting:
-        return const _TierInfo('home.milestone.tiers.starting', '🌱', Color(0xFF2E7D32));
+        return const _TierInfo(
+          'home.milestone.tiers.starting',
+          '🌱',
+          Color(0xFF2E7D32),
+        );
       case PatientMilestoneTier.bronze:
-        return const _TierInfo('home.milestone.tiers.bronze', '🥉', Color(0xFFB08D57));
+        return const _TierInfo(
+          'home.milestone.tiers.bronze',
+          '🥉',
+          Color(0xFFB08D57),
+        );
       case PatientMilestoneTier.silver:
-        return const _TierInfo('home.milestone.tiers.silver', '🥈', Color(0xFF8E9AAF));
+        return const _TierInfo(
+          'home.milestone.tiers.silver',
+          '🥈',
+          Color(0xFF8E9AAF),
+        );
       case PatientMilestoneTier.gold:
-        return const _TierInfo('home.milestone.tiers.gold', '🥇', Color(0xFFD4AF37));
+        return const _TierInfo(
+          'home.milestone.tiers.gold',
+          '🥇',
+          Color(0xFFD4AF37),
+        );
       case PatientMilestoneTier.platinum:
-        return const _TierInfo('home.milestone.tiers.platinum', '💎', Color(0xFF4FA8D8));
+        return const _TierInfo(
+          'home.milestone.tiers.platinum',
+          '💎',
+          Color(0xFF4FA8D8),
+        );
     }
   }
 }

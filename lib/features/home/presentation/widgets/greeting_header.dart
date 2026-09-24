@@ -20,10 +20,7 @@ class GreetingHeader extends StatelessWidget {
       onTap: () => Navigator.of(context).pushNamed(Routes.editProfile),
       child: Row(
         children: [
-          DoctorAvatar(
-            size: 52.w,
-            borderRadius: BorderRadius.circular(14.r),
-          ),
+          DoctorAvatar(size: 52.w, borderRadius: BorderRadius.circular(14.r)),
           horizontalSpace(12),
           Expanded(
             child: Column(

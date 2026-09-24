@@ -34,4 +34,15 @@ class AppColors {
   static const Color grey700 = Color(0xFF616161);
   static const Color grey800 = Color(0xFF424242);
   static const Color grey900 = Color(0xFF212121);
+
+  /// An accent color that stays readable as an icon on the current surface.
+  ///
+  /// The brand navy and red are too dark to see on the dark surface, so in
+  /// dark mode this lifts their lightness while keeping the hue. Light mode
+  /// gets the color unchanged.
+  static Color accentFor(Color color, Brightness brightness) {
+    if (brightness == Brightness.light) return color;
+    final hsl = HSLColor.fromColor(color);
+    return hsl.lightness >= 0.68 ? color : hsl.withLightness(0.68).toColor();
+  }
 }

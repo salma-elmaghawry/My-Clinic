@@ -1,3 +1,4 @@
+import 'package:my_clinic/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_clinic/core/animations/animations.dart';
@@ -20,6 +21,7 @@ class QuickNavTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final accent = AppColors.accentFor(color, theme.brightness);
     return AnimatedTap(
       onTap: onTap,
       child: Container(
@@ -41,10 +43,10 @@ class QuickNavTile extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(10.w),
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.12),
+                color: accent.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              child: Icon(icon, color: color, size: 22.sp),
+              child: Icon(icon, color: accent, size: 22.sp),
             ),
             verticalSpace(8),
             // Flexible so a two-line label (common in Arabic) shrinks to the
