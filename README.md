@@ -14,7 +14,14 @@ doctor's phone, in English or Arabic (right-to-left), in light or dark mode.
 A three-minute walk-through of every main feature, recorded on an iPhone 17
 Pro simulator with the built-in demo clinic:
 
-**[▶ Watch the demo (MP4)](docs/demo/my_clinic_demo.mp4)**
+<p align="center">
+  <a href="https://youtu.be/Lp2XHssitXA">
+    <img src="docs/screenshots/01_home.png" width="260" alt="Watch the My Clinic demo on YouTube" />
+  </a>
+</p>
+
+**[▶ Watch the demo on YouTube](https://youtu.be/Lp2XHssitXA)**, or
+[download the MP4](docs/demo/my_clinic_demo.mp4).
 
 ## Features
 
